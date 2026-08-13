@@ -1,5 +1,5 @@
 <<<<<<< HEAD
-# SHABA Synergy
+# SHABA industry
 
 1. Présentation de l'entreprise
 
