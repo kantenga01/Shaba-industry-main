@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # SHABA Synergy
 
 1. Présentation de l'entreprise
@@ -323,3 +324,6 @@ cd <repository-name>
 npm i
 npm run dev
 ```
+=======
+# Shaba-industry-main
+>>>>>>> 5b0d8c729560fcecd6365e8f3a5b1a861a48a4ba
