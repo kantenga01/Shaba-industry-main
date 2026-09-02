@@ -1,17 +1,17 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { company, services } from "@/lib/site-data";
 import logoWhite from "@/assets/logo-shaba-white.png";
 
 const nav = [
-  { to: "/", label: "Accueil" },
-  { to: "/a-propos", label: "À propos" },
+  { to: "/", label: "Home" },
+  { to: "/a-propos", label: "About Us" },
   { to: "/services", label: "Services" },
-  { to: "/realisations", label: "Réalisations" },
-  { to: "/catalogue", label: "Catalogue" },
-  { to: "/blog", label: "Blog" },
+  { to: "/realisations", label: "Projects" },
+  { to: "/catalogue", label: "Ressources" },
+  //{ to: "/blog", label: "News" },
   { to: "/contact", label: "Contact" },
 ];
 
@@ -21,10 +21,20 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-ink/95 text-ink-foreground backdrop-blur">
-      <div className="hidden border-b border-white/10 md:block">
+      <div className="hidden  border-b border-white/10 md:block">
         <div className="container-page flex h-9 items-center justify-between text-xs text-ink-muted">
-          <span>{company.address}</span>
+          <div className="flex items-center gap-2">
+            <MapPin className="h-4 w-4" />
+            {company.address}
+          </div>
           <span className="flex items-center gap-4">
+            <a className="hover:text-primary" href={`/carrieres`}>
+              {"Careers"}
+            </a>
+            <a className="hover:text-primary" href={`/blog`}>
+              {"News  "}
+            </a>
+            <span>|</span>
             <a className="hover:text-primary" href={`tel:${primaryPhone.replace(/\s/g, "")}`}>
               {primaryPhone}
             </a>
@@ -36,15 +46,15 @@ export function Header() {
       </div>
 
       <div className="container-page flex items-center justify-between gap-6 py-4">
-  <Link to="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
-    <img
-      src={logoWhite}
-      alt="SHABA INDUSTRY"
-      width={1}
-      height={1}
-      className="h-20 w-auto md:h-22"
-    />
-  </Link>
+        <Link to="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
+          <img
+            src={logoWhite}
+            alt="SHABA INDUSTRY LOGO"
+            width={1}
+            height={1}
+            className="h-15 w-auto md:h-19"
+          />
+        </Link>
 
         <nav className="hidden items-center gap-6 lg:flex">
           {nav.map((n) => (
@@ -62,7 +72,7 @@ export function Header() {
 
         <div className="hidden items-center gap-3 lg:flex">
           <Button asChild size="sm" variant="default">
-            <Link to="/devis">Demander un devis</Link>
+            <Link to="/devis">GET A QUOTE</Link>
           </Button>
         </div>
 
@@ -95,7 +105,7 @@ export function Header() {
               ))}
               <Button asChild>
                 <Link to="/devis" onClick={() => setOpen(false)}>
-                  Demander un devis
+                  GET A QUOTE
                 </Link>
               </Button>
               <a

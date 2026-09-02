@@ -23,7 +23,14 @@ export const Route = createFileRoute("/realisations")({
   component: Realisations,
 });
 
-const categories = ["Toutes", "Construction", "Industrie", "Impression", "Informatique", "Logistique"];
+const categories = [
+  "Toutes",
+  "Construction",
+  "Industrie",
+  "Impression",
+  "Informatique",
+  "Logistique",
+];
 
 function Realisations() {
   const [cat, setCat] = useState("Toutes");
@@ -38,17 +45,17 @@ function Realisations() {
         description="Un aperçu de nos interventions pour les entreprises industrielles, minières et commerciales du Haut-Katanga."
       />
 
-      <section className="py-14 md:py-20">
+      <section className="py-14 bg-foreground md:py-20">
         <div className="container-page">
           <div className="flex flex-wrap gap-2">
             {categories.map((c) => (
               <button
                 key={c}
                 onClick={() => setCat(c)}
-                className={`border px-4 py-2 text-sm uppercase tracking-wide transition-colors ${
+                className={`border px-4 py-2 text-sm font-semibold text-primary-foreground uppercase tracking-wide transition-colors ${
                   cat === c
-                    ? "border-primary bg-primary text-primary-foreground"
-                    : "border-border hover:border-primary"
+                    ? "border-border hover:border-primary"
+                    : "border-primary bg-primary font-semibold text-primary-foreground"
                 }`}
               >
                 {c}
@@ -77,9 +84,9 @@ function Realisations() {
         </div>
       </section>
 
-      <section className="bg-muted py-14 md:py-20">
+      <section className="bg-foreground py-14 md:py-20">
         <div className="container-page">
-          <h2 className="text-2xl font-bold uppercase md:text-3xl">Galerie vidéos</h2>
+          <h2 className="text-2xl font-bold text-ink uppercase md:text-3xl">Galerie vidéos</h2>
           <p className="mt-2 text-sm text-muted-foreground">
             Reportages de chantier et présentations de nos pôles d'activité.
           </p>

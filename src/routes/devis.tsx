@@ -19,32 +19,36 @@ export const Route = createFileRoute("/devis")({
   validateSearch: searchSchema,
   head: () => ({
     meta: [
-      { title: "Demande de devis — SHABA INDUSTRY Lubumbashi" },
+      { title: "Request a Quote — SHABA INDUSTRY Lubumbashi" },
       {
         name: "description",
         content:
-          "Obtenez un devis gratuit pour vos EPI, travaux de construction, impressions, fournitures industrielles, logistique ou projets IT à Lubumbashi.",
+          "Get a free quote for PPE, construction works, printing, industrial supplies, logistics, or IT projects in Lubumbashi.",
       },
-      { property: "og:title", content: "Demande de devis — SHABA INDUSTRY" },
+      { property: "og:title", content: "Request a Quote — SHABA INDUSTRY" },
       {
         property: "og:description",
-        content: "Décrivez votre besoin, nous revenons vers vous sous 24h ouvrées.",
+        content: "Describe your requirements and we will respond within 24 business hours.",
       },
     ],
   }),
-  component: Devis,
+  component: Quote,
 });
 
 const quoteSchema = z.object({
-  name: z.string().trim().min(2, "Nom trop court").max(100),
+  name: z.string().trim().min(2, "Name too short").max(100),
   company: z.string().trim().max(120).optional(),
-  phone: z.string().trim().min(6, "Téléphone invalide").max(30),
-  email: z.string().trim().email("Email invalide").max(255),
-  service: z.string().min(1, "Sélectionnez un service"),
-  message: z.string().trim().min(10, "Décrivez votre besoin (10 caractères min.)").max(2000),
+  phone: z.string().trim().min(6, "Invalid phone number").max(30),
+  email: z.string().trim().email("Invalid email").max(255),
+  service: z.string().min(1, "Please select a service"),
+  message: z
+    .string()
+    .trim()
+    .min(10, "Please describe your requirement (min. 10 characters)")
+    .max(2000),
 });
 
-function Devis() {
+function Quote() {
   const { service } = Route.useSearch();
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [sending, setSending] = useState(false);
@@ -58,57 +62,62 @@ function Devis() {
       const next: Record<string, string> = {};
       for (const issue of parsed.error.issues) next[String(issue.path[0])] = issue.message;
       setErrors(next);
-      toast.error("Merci de corriger les champs indiqués.");
+      toast.error("Please correct the highlighted fields.");
       return;
     }
     setErrors({});
     setSending(true);
     try {
       await submitQuote(parsed.data);
-      toast.success("Demande envoyée ! Notre équipe vous répond sous 24h ouvrées.");
+      toast.success("Request submitted! Our team will respond within 24 business hours.");
       form.reset();
     } catch {
-      toast.error("Envoi impossible pour le moment. Réessayez ou contactez-nous par WhatsApp.");
+      toast.error("Unable to send at the moment. Please try again or contact us via WhatsApp.");
     } finally {
       setSending(false);
     }
   };
 
-
   return (
     <>
       <PageHero
-        eyebrow="Devis"
-        title="Demander un devis"
-        description="Remplissez le formulaire, notre équipe commerciale vous répond sous 24 heures ouvrées."
+        eyebrow="Get a Tailored Proposal"
+        title="Business Requests"
+        description="Submit your requirements and receive a detailed quotation within one business day"
       />
 
-      <section className="py-16 md:py-20">
+      <section className="py-16 text-ink bg-foreground md:py-20">
         <div className="container-page grid gap-10 lg:grid-cols-[2fr_1fr]">
           <form onSubmit={onSubmit} className="grid gap-5 border border-border p-6 md:p-8">
             <div className="grid gap-5 sm:grid-cols-2">
-              <Field label="Nom complet *" error={errors["name"]}>
-                <Input name="name" required maxLength={100} placeholder="Votre nom" />
+              <Field label="Full Name *" error={errors["name"]}>
+                <Input name="name" required maxLength={100} placeholder="Your name" />
               </Field>
-              <Field label="Société" error={errors["company"]}>
-                <Input name="company" maxLength={120} placeholder="Nom de votre société" />
+              <Field label="Company" error={errors["company"]}>
+                <Input name="company" maxLength={120} placeholder="Your company name" />
               </Field>
-              <Field label="Téléphone *" error={errors["phone"]}>
+              <Field label="Phone *" error={errors["phone"]}>
                 <Input name="phone" required maxLength={30} placeholder="+243 ..." />
               </Field>
               <Field label="Email *" error={errors["email"]}>
-                <Input name="email" type="email" required maxLength={255} placeholder="vous@societe.com" />
+                <Input
+                  name="email"
+                  type="email"
+                  required
+                  maxLength={255}
+                  placeholder="you@company.com"
+                />
               </Field>
             </div>
 
-            <Field label="Service concerné *" error={errors["service"]}>
+            <Field label="Service Required *" error={errors["service"]}>
               <select
                 name="service"
                 defaultValue={service ?? ""}
                 required
-                className="h-10 w-full rounded-sm border border-input bg-background px-3 text-sm"
+                className="h-10 w-full rounded-sm border border-input bg-foreground px-3 text-sm"
               >
-                <option value="">Sélectionnez un service</option>
+                <option value="">------</option>
                 {services.map((s) => (
                   <option key={s.slug} value={s.slug}>
                     {s.title}
@@ -117,36 +126,44 @@ function Devis() {
               </select>
             </Field>
 
-            <Field label="Description du besoin *" error={errors["message"]}>
-              <Textarea name="message" rows={6} required maxLength={2000} placeholder="Quantités, délais, lieu de livraison…" />
+            <Field label="Requirement Description *" error={errors["message"]}>
+              <Textarea
+                name="message"
+                rows={6}
+                required
+                maxLength={2000}
+                placeholder="Quantities, deadlines, delivery location…"
+              />
             </Field>
 
-            <Field label="Pièces jointes (plans, cahier des charges)">
+            <Field label="Attachments (plans, specifications)">
               <Input name="files" type="file" multiple />
             </Field>
 
             <Button type="submit" size="lg" disabled={sending} className="justify-self-start">
-              <Send className="mr-2 h-4 w-4" /> {sending ? "Envoi…" : "Envoyer la demande"}
+              <Send className="mr-2 h-4 w-4" /> {sending ? "Sending…" : "Submit Request"}
             </Button>
           </form>
 
           <aside className="h-max border-l-4 border-primary bg-muted p-6">
-            <h2 className="font-display text-lg font-semibold uppercase">Comment ça marche</h2>
+            <h2 className="font-display text-primary text-lg font-semibold uppercase">
+              How It Works ?
+            </h2>
             <ol className="mt-4 space-y-4 text-sm text-muted-foreground">
               <li>
-                <span className="font-display font-semibold text-foreground">1. Votre demande</span>
+                <span className="font-display font-semibold text-foreground">1. Your Request</span>
                 <br />
-                Décrivez votre besoin en quelques lignes.
+                Describe your requirements in a few lines.
               </li>
               <li>
-                <span className="font-display font-semibold text-foreground">2. Étude</span>
+                <span className="font-display font-semibold text-foreground">2. Review</span>
                 <br />
-                Nos équipes analysent la faisabilité et les délais.
+                Our team analyzes feasibility and timelines.
               </li>
               <li>
-                <span className="font-display font-semibold text-foreground">3. Devis</span>
+                <span className="font-display font-semibold text-foreground">3. Quote</span>
                 <br />
-                Vous recevez une offre chiffrée sous 24h ouvrées.
+                You receive a detailed offer within 24 business hours.
               </li>
             </ol>
           </aside>

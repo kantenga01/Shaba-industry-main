@@ -31,7 +31,7 @@ function ServicesIndex() {
         title="Six pôles d'expertise"
         description="Une offre complète pour vos opérations industrielles, vos chantiers, votre communication et votre informatique."
       />
-      <section className="py-16 md:py-20">
+      <section className="py-16 bg-foreground md:py-20">
         <div className="container-page grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {services.map((s) => (
             <Link key={s.slug} to="/services/$slug" params={{ slug: s.slug }} className="group">

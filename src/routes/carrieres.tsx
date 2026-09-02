@@ -13,23 +13,24 @@ import { submitApplication } from "@/lib/submissions";
 export const Route = createFileRoute("/carrieres")({
   head: () => ({
     meta: [
-      { title: "Carrières — Offres d'emploi chez SHABA INDUSTRY à Lubumbashi" },
+      { title: "Careers — Opportunities at SHABA INDUSTRY, Lubumbashi" },
       {
         name: "description",
         content:
-          "Rejoignez SHABA INDUSTRY : offres d'emploi à Lubumbashi en maintenance industrielle, commerce, infographie et développement web. Déposez votre CV.",
+          "Discover career opportunities at SHABA INDUSTRY in Lubumbashi: industrial maintenance, sales, graphic design, and web development. Submit your CV and join our growing team.",
       },
-      { property: "og:title", content: "Carrières — SHABA INDUSTRY" },
+      { property: "og:title", content: "Careers — SHABA INDUSTRY" },
       {
         property: "og:description",
-        content: "Offres d'emploi et dépôt de candidature spontanée à Lubumbashi, RDC.",
+        content:
+          "Explore job openings or send a spontaneous application to SHABA INDUSTRY in Lubumbashi, DRC.",
       },
     ],
   }),
-  component: Carrieres,
+  component: Careers,
 });
 
-function Carrieres() {
+function Careers() {
   const [sending, setSending] = useState(false);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -41,13 +42,15 @@ function Carrieres() {
       await submitApplication({
         name: String(fd.get("name") ?? "").trim(),
         email: String(fd.get("email") ?? "").trim(),
-        position: String(fd.get("position") ?? "").trim() || "Candidature spontanée",
+        position: String(fd.get("position") ?? "").trim() || "Open Application",
         message: String(fd.get("message") ?? "").trim() || undefined,
       });
-      toast.success("Candidature envoyée. Merci de votre intérêt !");
+      toast.success(
+        "Application submitted successfully. Thank you for your interest in SHABA INDUSTRY!",
+      );
       form.reset();
     } catch {
-      toast.error("Envoi impossible pour le moment. Réessayez plus tard.");
+      toast.error("Submission failed. Please try again later.");
     } finally {
       setSending(false);
     }
@@ -56,15 +59,15 @@ function Carrieres() {
   return (
     <>
       <PageHero
-        eyebrow="Carrières"
-        title="Rejoignez nos équipes"
-        description="Nous recrutons des profils techniques et commerciaux passionnés par l'industrie et le service client."
+        eyebrow="Careers"
+        title="Shape Your Future With Us"
+        description="At Shaba Industry, we welcome ambitious professionals eager to drive innovation in industry and deliver exceptional customer service. Explore our current openings or send us your CV."
       />
 
-      <section className="py-16 md:py-20">
+      <section className="py-16 text-ink bg-foreground md:py-20">
         <div className="container-page grid gap-10 lg:grid-cols-[3fr_2fr]">
           <div>
-            <h2 className="text-2xl font-bold uppercase">Offres d'emploi</h2>
+            <h2 className="text-2xl font-bold uppercase">Current Openings</h2>
             <div className="mt-6 space-y-4">
               {jobs.map((j) => (
                 <div
@@ -83,7 +86,7 @@ function Carrieres() {
                     </p>
                   </div>
                   <Button variant="secondary" size="sm" asChild>
-                    <a href="#candidature">Postuler</a>
+                    <a href="#application">Apply Now</a>
                   </Button>
                 </div>
               ))}
@@ -91,37 +94,49 @@ function Carrieres() {
           </div>
 
           <form
-            id="candidature"
+            id="application"
             onSubmit={onSubmit}
-            className="grid h-max gap-4 border-l-4 border-primary bg-muted p-6"
+            className="grid h-max gap-4 border-l-4 text-ink border-primary bg-foreground p-6"
           >
-            <h2 className="text-2xl font-bold uppercase">Déposer votre CV</h2>
+            <h2 className="text-2xl font-bold uppercase">Submit Your Application</h2>
             <div className="grid gap-2">
-              <Label className="text-xs uppercase tracking-wide text-muted-foreground">Nom complet *</Label>
+              <Label className="text-xs uppercase tracking-wide text-muted-foreground">
+                Full Name *
+              </Label>
               <Input name="name" required maxLength={100} />
             </div>
             <div className="grid gap-2">
-              <Label className="text-xs uppercase tracking-wide text-muted-foreground">Email *</Label>
+              <Label className="text-xs uppercase tracking-wide text-muted-foreground">
+                Email *
+              </Label>
               <Input name="email" type="email" required maxLength={255} />
             </div>
             <div className="grid gap-2">
-              <Label className="text-xs uppercase tracking-wide text-muted-foreground">Poste visé</Label>
+              <Label className="text-xs uppercase tracking-wide text-muted-foreground">
+                Position of Interest
+              </Label>
               <Input name="position" maxLength={120} />
             </div>
             <div className="grid gap-2">
-              <Label className="text-xs uppercase tracking-wide text-muted-foreground">Message</Label>
-              <Textarea name="message" rows={4} maxLength={1500} />
+              <Label className="text-xs uppercase tracking-wide text-muted-foreground">
+                Message
+              </Label>
+              <Textarea
+                name="message"
+                rows={4}
+                maxLength={1500}
+                placeholder="Tell us about your skills, experience, and motivation."
+              />
             </div>
             <div className="grid gap-2">
-              <Label className="text-xs uppercase tracking-wide text-muted-foreground">CV (PDF)</Label>
+              <Label className="text-xs uppercase tracking-wide text-muted-foreground">
+                CV (PDF)
+              </Label>
               <Input name="cv" type="file" accept=".pdf,.doc,.docx" />
-              <p className="text-xs text-muted-foreground">
-                Envoyez votre CV en pièce jointe à info@shabaindustry.com après l'envoi du
-                formulaire.
-              </p>
+              <p className="text-xs text-muted-foreground">Multiple files ? </p>
             </div>
             <Button type="submit" disabled={sending} className="justify-self-start">
-              <Send className="mr-2 h-4 w-4" /> {sending ? "Envoi…" : "Envoyer ma candidature"}
+              <Send className="mr-2 h-4 w-4" /> {sending ? "Submitting…" : "Apply Now"}
             </Button>
           </form>
         </div>

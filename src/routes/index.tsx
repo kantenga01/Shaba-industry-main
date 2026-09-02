@@ -1,14 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import {
-  ArrowRight,
-  CheckCircle2,
-  HardHat,
-  Quote,
-  ShieldCheck,
-  Timer,
-  Truck,
-} from "lucide-react";
+import { ArrowRight, CheckCircle2, HardHat, Quote, ShieldCheck, Timer, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import heroImg from "@/assets/hero-industry.jpg";
@@ -17,17 +9,20 @@ import { services, stats, testimonials, company } from "@/lib/site-data";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "SHABA INDUSTRY — Partenaire industriel à Lubumbashi (RDC)" },
+      { title: "Shaba Industry — Leading Industrial and Corporate Service Provider" },
       {
         name: "description",
         content:
-          "Entreprise multiservices à Lubumbashi : EPI, construction, impression, fournitures industrielles et minières, import-export et services IT. Demandez votre devis.",
+          "Premier industrial contractor in Lubumbashi, DRC. Premium PPE & workwear, mining procurement, cross-border logistics, commercial printing, construction, and enterprise technology.",
       },
-      { property: "og:title", content: "SHABA INDUSTRY — Votre partenaire industriel de confiance" },
+      {
+        property: "og:title",
+        content: "SHABA INDUSTRY — Integrated Industrial & Mining Solutions",
+      },
       {
         property: "og:description",
         content:
-          "EPI, construction, impression, fournitures industrielles, logistique et IT à Lubumbashi, RDC.",
+          "Reliable procurement, certified PPE, freight logistics, civil works, printing, and IT services tailored for mining and industrial operations across the DRC.",
       },
     ],
   }),
@@ -36,16 +31,32 @@ export const Route = createFileRoute("/")({
 
 const slides = [
   {
-    title: "Votre partenaire industriel de confiance",
-    text: "EPI, construction, impression, fournitures industrielles, logistique et services IT — à Lubumbashi et dans tout le Haut-Katanga.",
+    title: "Your Trusted Industrial & Mining Partner",
+    text: "Delivering end-to-end solutions across PPE, mining supplies, logistics, commercial printing, construction, and IT services across the DRC.",
   },
   {
-    title: "Sécurité et équipements certifiés",
-    text: "Un stock local d'équipements de protection individuelle conformes aux normes internationales.",
+    title: "Certified PPE & Safety Solutions",
+    text: "World-class site safety gear, high-visibility workwear, and protective equipment compliant with international standards.",
   },
   {
-    title: "Des solutions industrielles complètes",
-    text: "Une seule entreprise pour vos chantiers, vos approvisionnements et votre transformation digitale.",
+    title: "Mining & Industrial Supplies",
+    text: "Reliable procurement of specialized machinery, technical consumables, heavy-duty hardware, and industrial tooling.",
+  },
+  {
+    title: "Import/Export & Customs Clearance",
+    text: "Cross-border freight forwarding, supply chain logistics, and seamless customs brokerage for time-critical operations.",
+  },
+  {
+    title: "High-Impact Commercial Printing",
+    text: "Large-format printing, dynamic corporate branding, structural signage, and high-volume promotional materials.",
+  },
+  {
+    title: "Industrial Construction & Maintenance",
+    text: "Turnkey structural engineering, facility renovation, civil works, and comprehensive operational maintenance.",
+  },
+  {
+    title: "Enterprise Technology & IT Infrastructure",
+    text: "Custom software engineering, network architecture, cybersecurity, and managed IT services designed for modern enterprises.",
   },
 ];
 
@@ -78,7 +89,7 @@ function Index() {
         <div className="container-page relative flex min-h-[80vh] flex-col justify-center py-20">
           <div key={active} className="rise-in max-w-3xl">
             <p className="font-display text-xs uppercase tracking-[0.35em] text-primary">
-              SHABA INDUSTRY · Lubumbashi, RDC
+              SHABA INDUSTRY
             </p>
             <h1 className="mt-5 text-4xl font-bold uppercase leading-[1.05] md:text-6xl">
               {slide.title}
@@ -90,11 +101,16 @@ function Index() {
           <div className="mt-9 flex flex-wrap gap-3">
             <Button asChild size="lg">
               <Link to="/devis">
-                Demander un devis <ArrowRight className="ml-2 h-4 w-4" />
+                GET A QUOTE <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-white/30 bg-transparent text-ink-foreground hover:bg-white/10">
-              <Link to="/contact">Nous contacter</Link>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="border-white/30 bg-transparent text-ink-foreground hover:bg-white/10"
+            >
+              <Link to="/contact">GET IN TOUCH</Link>
             </Button>
           </div>
           <div className="mt-10 flex gap-2">
@@ -150,7 +166,7 @@ function Index() {
       </section>
 
       {/* SERVICES */}
-      <section className="bg-muted py-16 md:py-24">
+      <section className="bg-foreground py-16 md:py-24">
         <div className="container-page">
           <div className="max-w-2xl">
             <p className="font-display text-xs uppercase tracking-[0.3em] text-muted-foreground">
@@ -189,15 +205,30 @@ function Index() {
       {/* WHY US */}
       <section className="py-16 md:py-24">
         <div className="container-page">
-          <h2 className="text-3xl font-bold uppercase md:text-4xl">Pourquoi choisir SHABA INDUSTRY</h2>
+          <h2 className="text-3xl font-bold uppercase md:text-4xl">Why Choose Us?</h2>
           <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {[
-              { icon: ShieldCheck, t: "Qualité certifiée", d: "Des produits et prestations conformes aux normes du secteur." },
+              {
+                icon: ShieldCheck,
+                t: "Qualité certifiée",
+                d: "Des produits et prestations conformes aux normes du secteur.",
+              },
               { icon: Timer, t: "Réactivité", d: "Stock local et interventions rapides sur site." },
-              { icon: HardHat, t: "Expertise terrain", d: "Des équipes formées aux exigences minières et industrielles." },
-              { icon: Truck, t: "Chaîne complète", d: "De l'approvisionnement international à la livraison." },
+              {
+                icon: HardHat,
+                t: "Expertise terrain",
+                d: "Des équipes formées aux exigences minières et industrielles.",
+              },
+              {
+                icon: Truck,
+                t: "Chaîne complète",
+                d: "De l'approvisionnement international à la livraison.",
+              },
             ].map((f) => (
-              <div key={f.t} className="border border-border p-6 transition-colors hover:border-primary">
+              <div
+                key={f.t}
+                className="border border-border p-6 transition-colors hover:border-primary"
+              >
                 <f.icon className="h-8 w-8 text-primary" />
                 <h3 className="mt-4 font-display text-lg font-semibold uppercase">{f.t}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{f.d}</p>
@@ -208,28 +239,33 @@ function Index() {
       </section>
 
       {/* PARTNERS */}
-      <section className="border-y border-border bg-muted py-12">
+      <section className="border-y border-border bg-foreground py-12">
         <div className="container-page">
           <p className="text-center font-display text-xs uppercase tracking-[0.3em] text-muted-foreground">
-            Ils nous font confiance
+            They Trust Us
           </p>
           <div className="mt-8 grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-6">
-            {["Mining Corp", "Katanga Build", "Kinsevere Log", "Congo Steel", "Lubum Trade", "AfriTech"].map(
-              (p) => (
-                <div
-                  key={p}
-                  className="flex h-16 items-center justify-center border border-border bg-background font-display text-sm uppercase tracking-wide text-muted-foreground"
-                >
-                  {p}
-                </div>
-              ),
-            )}
+            {[
+              "Mining Corp",
+              "Katanga Build",
+              "Kinsevere Log",
+              "Congo Steel",
+              "Lubum Trade",
+              "AfriTech",
+            ].map((p) => (
+              <div
+                key={p}
+                className="flex h-16 items-center justify-center border border-border bg-background font-display text-sm uppercase tracking-wide text-muted-foreground"
+              >
+                {p}
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="py-16 md:py-24">
+      <section className="py-16 bg-foreground md:py-24">
         <div className="container-page">
           <h2 className="text-3xl font-bold uppercase md:text-4xl">Avis clients</h2>
           <div className="mt-10 grid gap-6 md:grid-cols-3">

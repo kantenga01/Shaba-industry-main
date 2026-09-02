@@ -4,11 +4,12 @@ import print from "@/assets/service-print.jpg";
 import fournitures from "@/assets/service-fournitures.jpg";
 import logistique from "@/assets/service-logistique.jpg";
 import it from "@/assets/service-it.jpg";
+import { format } from "path";
 
 export const company = {
   name: "SHABA INDUSTRY",
-  tagline: "Votre partenaire industriel de confiance",
-  address: "02 Changalele, Route Kinsevere, Quartier Jolie Site, Lubumbashi, Haut-Katanga, RDC",
+  tagline: "Safety is our priority. Quality is our standard.",
+  address: "02 Changalele, Kinsevere Road, Q. Joli Site, Lubumbashi, DR Congo",
   phones: ["+243 820 191 003", "+243 900 261 229"],
   whatsapp: "243820191003",
   emails: ["info@shabaindustry.com", "sales@shabaindustry.com"],
@@ -25,199 +26,232 @@ export type Service = {
 
 export const services: Service[] = [
   {
-    slug: "epi",
-    title: "Équipements de Protection Individuelle",
-    short: "EPI certifiés pour protéger vos équipes sur tous les chantiers et sites miniers.",
+    slug: "workwear-ppe",
+    title: "Workwear & PPE",
+    short: "Certified PPE to safeguard your teams across construction sites and mining operations.",
     intro:
-      "SHABA INDUSTRY fournit une gamme complète d'équipements de protection individuelle conformes aux normes internationales, disponibles en stock à Lubumbashi et livrables sur site.",
+      "SHABA INDUSTRY provides a full range of personal protective equipment compliant with international standards, available in Lubumbashi and deliverable directly to your site.",
     image: epi,
     items: [
-      "Casques de sécurité",
-      "Gants de protection",
-      "Lunettes de protection",
-      "Chaussures de sécurité",
-      "Combinaisons de travail",
-      "Gilets réfléchissants",
-      "Masques et protections respiratoires",
-      "Harnais antichute",
-      "Accessoires de protection",
-    ],
-  },
-  {
-    slug: "construction",
-    title: "SHABA Construction",
-    short: "Construction, rénovation, plomberie et maintenance industrielle.",
-    intro:
-      "Des équipes techniques expérimentées pour vos projets de construction, de rénovation et de maintenance, du gros œuvre aux finitions et aux travaux industriels.",
-    image: construction,
-    items: [
-      "Construction de bâtiments",
-      "Plomberie et sanitaires",
-      "Rénovation et réhabilitation",
-      "Travaux industriels",
-      "Maintenance préventive et corrective",
-    ],
-  },
-  {
-    slug: "print",
-    title: "SHABA Print",
-    short: "Impression numérique, grand format et communication visuelle.",
-    intro:
-      "Un atelier d'impression complet pour donner de la visibilité à votre marque : du flyer à la bâche grand format, avec un rendu professionnel et des délais maîtrisés.",
-    image: print,
-    items: [
-      "Impression numérique",
-      "Impression grand format",
-      "Flyers et dépliants",
-      "Cartes de visite",
-      "Roll-up et kakémonos",
-      "Bâches publicitaires",
-      "Branding et habillage",
-      "Communication visuelle",
-    ],
-  },
-  {
-    slug: "fournitures-industrielles",
-    title: "Fournitures Industrielles & Minières",
-    short: "Outillage, équipements et consommables pour l'industrie et les mines.",
-    intro:
-      "Un catalogue étendu de fournitures industrielles et minières, avec approvisionnement local et international pour garantir la continuité de vos opérations.",
-    image: fournitures,
-    items: [
-      "Outillage professionnel",
-      "Équipements industriels",
-      "Fournitures minières",
-      "Consommables techniques",
+      "Safety helmets",
+      "Protective gloves",
+      "Safety glasses",
+      "Safety footwear",
+      "Work overalls",
+      "Reflective vests",
+      "Respiratory masks and protection",
+      "Fall‑arrest harnesses",
+      "Protective accessories",
     ],
   },
   {
     slug: "import-export",
-    title: "Import & Export",
-    short: "Logistique, transport et approvisionnement international.",
+    title: "Import & Export Logistics",
+    short: "Comprehensive logistics, transport, and international sourcing.",
     intro:
-      "SHABA INDUSTRY gère l'ensemble de votre chaîne d'approvisionnement : sourcing, importation, dédouanement, transport et livraison sur site.",
+      "SHABA INDUSTRY manages your entire supply chain: sourcing, importation, customs clearance, transport, and on‑site delivery.",
     image: logistique,
     items: [
-      "Logistique intégrée",
-      "Transport national et régional",
-      "Importation",
-      "Exportation",
-      "Fourniture de matériel",
+      "Integrated logistics",
+      "Domestic and regional transport",
+      "Import services",
+      "Export services",
+      "Supply of equipment",
+    ],
+  },
+  {
+    slug: "mining-supplies",
+    title: "Mining & Industrial Supplies",
+    short: "Tools, equipment, and consumables for mining and industry.",
+    intro:
+      "An extensive catalogue of industrial and mining supplies, sourced locally and internationally to ensure operational continuity.",
+    image: fournitures,
+    items: [
+      "Professional tools",
+      "Industrial equipment",
+      "Mining supplies",
+      "Technical consumables",
+    ],
+  },
+  {
+    slug: "construction",
+    title: "Shaba Construction",
+    short: "Construction, renovation, plumbing, and industrial maintenance.",
+    intro:
+      "Experienced technical teams for construction, renovation, and maintenance projects — from structural works to finishing and industrial services.",
+    image: construction,
+    items: [
+      "Building construction",
+      "Plumbing and sanitation",
+      "Renovation and rehabilitation",
+      "Industrial works",
+      "Preventive and corrective maintenance",
+    ],
+  },
+  {
+    slug: "print",
+    title: "Shaba Printing",
+    short: "Digital printing, large format, and visual communication.",
+    intro:
+      "A complete printing workshop to enhance your brand visibility — from flyers to large‑format banners, with professional quality and reliable turnaround times.",
+    image: print,
+    items: [
+      "Digital printing",
+      "Large‑format printing",
+      "Flyers and brochures",
+      "Business cards",
+      "Roll‑ups and banners",
+      "Advertising tarpaulins",
+      "Branding and vehicle wraps",
+      "Visual communication",
     ],
   },
   {
     slug: "it",
-    title: "Services IT",
-    short: "Logiciels, web, cybersécurité, réseaux, cloud et ERP.",
+    title: "Business Technology",
+    short: "Software, web, cybersecurity, networks, cloud, and ERP solutions.",
     intro:
-      "Notre pôle informatique accompagne la transformation digitale des entreprises congolaises, du développement sur mesure à l'infrastructure et à la sécurité.",
+      "Our IT division supports the digital transformation of Congolese businesses — from custom development to infrastructure and security.",
     image: it,
     items: [
-      "Développement logiciel",
-      "Développement web",
-      "Développement mobile",
-      "Cybersécurité",
-      "Marketing digital",
-      "Réseaux informatiques",
-      "Maintenance informatique",
-      "Hébergement",
-      "Cloud",
-      "Solutions ERP",
+      "Software development",
+      "Web development",
+      "Mobile development",
+      "Cybersecurity",
+      "Digital marketing",
+      "Network infrastructure",
+      "IT maintenance",
+      "Hosting services",
+      "Cloud solutions",
+      "ERP systems",
     ],
   },
 ];
 
 export const stats = [
-  { value: "10+", label: "Années d'expérience cumulée" },
-  { value: "6", label: "Pôles d'activité" },
-  { value: "250+", label: "Projets livrés" },
-  { value: "120+", label: "Clients accompagnés" },
+  { value: "10+", label: "Years of combined experience" },
+  { value: "6", label: "Business divisions" },
+  { value: "250+", label: "Projects delivered" },
+  { value: "120+", label: "Clients supported" },
 ];
 
 export const values = [
-  { title: "Sécurité", text: "La protection des personnes et des installations guide chacune de nos interventions." },
-  { title: "Qualité", text: "Des matériaux certifiés, des équipes formées et un contrôle rigoureux à chaque étape." },
-  { title: "Réactivité", text: "Un stock local à Lubumbashi et une logistique qui réduit vos délais d'attente." },
-  { title: "Intégrité", text: "Transparence sur les prix, les délais et les engagements contractuels." },
+  {
+    title: "Safety",
+    text: "Protecting people and facilities guides every one of our operations.",
+  },
+  {
+    title: "Quality",
+    text: "Certified materials, trained teams, and rigorous control at every stage.",
+  },
+  {
+    title: "Responsiveness",
+    text: "Local stock in Lubumbashi and logistics designed to minimize lead times.",
+  },
+  {
+    title: "Integrity",
+    text: "Transparent pricing, timelines, and contractual commitments.",
+  },
 ];
 
 export const testimonials = [
   {
-    name: "Direction HSE",
-    company: "Société minière, Haut-Katanga",
-    text: "Un fournisseur EPI fiable : livraisons conformes et rapides, même sur des commandes urgentes.",
+    name: "HSE Department",
+    company: "Mining Company, Haut‑Katanga",
+    text: "A reliable PPE supplier: compliant and fast deliveries, even for urgent orders.",
   },
   {
-    name: "Responsable technique",
-    company: "Groupe industriel, Lubumbashi",
-    text: "Les équipes de SHABA Construction ont livré notre extension d'atelier dans les délais annoncés.",
+    name: "Technical Manager",
+    company: "Industrial Group, Lubumbashi",
+    text: "The SHABA Construction team delivered our workshop extension within the agreed timeframe.",
   },
   {
-    name: "Service communication",
-    company: "Entreprise de distribution",
-    text: "Impression grand format impeccable et accompagnement complet sur notre branding.",
+    name: "Communications Department",
+    company: "Distribution Company",
+    text: "Impeccable large‑format printing and full support for our branding project.",
   },
 ];
 
 export const projects = [
-  { title: "Extension d'atelier industriel", category: "Construction", service: "construction" },
-  { title: "Fourniture EPI site minier", category: "Industrie", service: "epi" },
-  { title: "Habillage véhicules et bâches", category: "Impression", service: "print" },
-  { title: "Réseau et supervision IT", category: "Informatique", service: "it" },
-  { title: "Convoi matériel lourd", category: "Logistique", service: "import-export" },
-  { title: "Réhabilitation de bureaux", category: "Construction", service: "construction" },
-  { title: "Consommables et outillage", category: "Industrie", service: "fournitures-industrielles" },
-  { title: "Roll-up et signalétique salon", category: "Impression", service: "print" },
+  { title: "Industrial Workshop Extension", category: "Construction", service: "construction" },
+  { title: "PPE Supply for Mining Site", category: "Industry", service: "epi" },
+  { title: "Vehicle Branding & Banners", category: "Printing", service: "print" },
+  { title: "IT Network & Supervision", category: "Technology", service: "it" },
+  { title: "Heavy Equipment Transport", category: "Logistics", service: "import-export" },
+  { title: "Office Rehabilitation", category: "Construction", service: "construction" },
+  { title: "Consumables & Tools", category: "Industry", service: "fournitures-industrielles" },
+  { title: "Trade Show Roll‑ups & Signage", category: "Printing", service: "print" },
 ];
 
 export const catalogues = [
-  { title: "Catalogue EPI", desc: "Casques, gants, chaussures, harnais et accessoires de protection.", size: "PDF" },
-  { title: "Catalogue Fournitures Industrielles", desc: "Outillage, équipements et consommables miniers.", size: "PDF" },
-  { title: "Brochure SHABA Print", desc: "Formats, supports et finitions d'impression.", size: "PDF" },
-  { title: "Présentation SHABA INDUSTRY", desc: "Présentation générale de l'entreprise et de ses pôles.", size: "PDF" },
+  {
+    title: "Company Profile",
+    desc: "Corporate overview and business divisions.",
+    format: "PDF",
+  },
+  {
+    title: "Workwear & PPE Catalogue",
+    desc: "Helmets, gloves, footwear, harnesses, and protective accessories.",
+    format: "PDF",
+  },
+  {
+    title: "Industrial Supplies Catalogue",
+    desc: "Tools, equipment, and mining consumables.",
+    format: "PDF",
+  },
+  {
+    title: "SHABA Print Brochure",
+    desc: "Formats, media, and printing finishes.",
+    format: "XSLX",
+  },
+  {
+    title: "Our Fleet",
+    desc: "Comprehensive catalogue of rental equipment — from heavy machinery to specialized tools, maintained to industry standards and ready for deployment.",
+    format: "DOC",
+  },
 ];
 
 export const posts = [
   {
     slug: "choisir-epi-site-minier",
-    title: "Comment choisir les EPI adaptés à un site minier",
-    category: "EPI",
-    excerpt: "Normes, niveaux de protection et erreurs fréquentes lors du choix des équipements.",
+    title: "How to Choose the Right PPE for a Mining Site",
+    category: "PPE",
+    excerpt: "Standards, protection levels, and common mistakes when selecting equipment.",
     date: "2026-06-12",
   },
   {
     slug: "maintenance-industrielle-preventive",
-    title: "Maintenance industrielle préventive : par où commencer",
-    category: "Industrie",
-    excerpt: "Un plan de maintenance simple pour réduire les arrêts de production.",
+    title: "Preventive Industrial Maintenance: Where to Begin",
+    category: "Industry",
+    excerpt: "A simple maintenance plan to reduce production downtime.",
     date: "2026-05-28",
   },
   {
     slug: "cybersecurite-pme-rdc",
-    title: "Cybersécurité : les priorités des PME en RDC",
-    category: "Cybersécurité",
-    excerpt: "Sauvegardes, gestion des accès et sensibilisation des équipes.",
+    title: "Cybersecurity: Key Priorities for SMEs in the DRC",
+    category: "Cybersecurity",
+    excerpt: "Backups, access management, and employee awareness.",
     date: "2026-05-10",
   },
   {
     slug: "impression-grand-format-guide",
-    title: "Impression grand format : bien préparer ses fichiers",
-    category: "Impression",
-    excerpt: "Résolution, marges et supports : le guide pratique.",
+    title: "Large‑Format Printing: Preparing Your Files Correctly",
+    category: "Printing",
+    excerpt: "Resolution, margins, and media — a practical guide.",
     date: "2026-04-22",
   },
   {
     slug: "reussir-chantier-construction",
-    title: "Réussir un chantier de construction en 6 étapes",
+    title: "Managing a Construction Project in 6 Steps",
     category: "Construction",
-    excerpt: "De l'étude au suivi de chantier, les points de contrôle essentiels.",
+    excerpt: "From planning to site supervision, the essential checkpoints.",
     date: "2026-04-02",
   },
 ];
 
 export const jobs = [
-  { title: "Technicien de maintenance industrielle", type: "Temps plein", place: "Lubumbashi" },
-  { title: "Commercial B2B - Fournitures industrielles", type: "Temps plein", place: "Lubumbashi" },
-  { title: "Infographiste / Opérateur PAO", type: "Temps plein", place: "Lubumbashi" },
-  { title: "Développeur Web Full-Stack", type: "Temps plein / Hybride", place: "Lubumbashi" },
+  { title: "Industrial Maintenance Technician", type: "Full‑time", place: "Lubumbashi" },
+  { title: "B2B Sales Executive – Industrial Supplies", type: "Full‑time", place: "Lubumbashi" },
+  { title: "Graphic Designer / DTP Operator", type: "Full‑time", place: "Lubumbashi" },
+  { title: "Full‑Stack Web Developer", type: "Full‑time / Hybrid", place: "Lubumbashi" },
 ];
