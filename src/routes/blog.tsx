@@ -4,7 +4,8 @@ import { Search } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { posts } from "@/lib/site-data";
+import { posts, localized } from "@/lib/site-data";
+import { useLanguage } from "@/lib/language";
 
 export const Route = createFileRoute("/blog")({
   head: () => ({
@@ -27,18 +28,49 @@ export const Route = createFileRoute("/blog")({
 });
 
 function News() {
+  const { language } = useLanguage();
   const [q, setQ] = useState("");
-  const filtered = posts.filter((p) =>
-    (p.title + p.category + p.excerpt).toLowerCase().includes(q.toLowerCase()),
-  );
+
+  const t =
+    language === "fr"
+      ? {
+          eyebrow: "Actualités",
+          title: "Analyses, actualités et regards d'experts",
+          description:
+            "Découvrez des articles de référence sur la construction, l'industrie, les EPI, l'impression et la cybersécurité. Nos spécialistes partagent des conseils pratiques et les dernières évolutions du secteur.",
+          searchPlaceholder: "Rechercher un article…",
+          empty: "Aucun article trouvé pour votre recherche.",
+          dateLocale: "fr-FR",
+        }
+      : {
+          eyebrow: "News & Articles",
+          title: "Insights, Updates & Expert Perspectives",
+          description:
+            "Explore authoritative articles on construction, industry, PPE, printing, and cybersecurity. Our specialists share practical guidance and the latest developments shaping the sector.",
+          searchPlaceholder: "Search articles…",
+          empty: "No articles found for your search.",
+          dateLocale: "en-US",
+        };
+
+  // Recherche sur le texte localisé (dans la langue active), au lieu de
+  // concaténer directement des objets {fr,en} (ce qui produisait
+  // "[object Object]" et cassait le filtrage).
+  const query = q.toLowerCase();
+  const filtered = posts.filter((p) => {
+    const haystack = [
+      localized(p.title, language),
+      localized(p.category, language),
+      localized(p.excerpt, language),
+    ]
+      .join(" ")
+      .toLowerCase();
+
+    return haystack.includes(query);
+  });
 
   return (
     <>
-      <PageHero
-        eyebrow="News & Articles"
-        title="Insights, Updates & Expert Perspectives"
-        description="Explore authoritative articles on construction, industry, PPE, printing, and cybersecurity. Our specialists share practical guidance and the latest developments shaping the sector."
-      />
+      <PageHero eyebrow={t.eyebrow} title={t.title} description={t.description} />
 
       <section className="py-16 bg-foreground md:py-20">
         <div className="container-page">
@@ -47,8 +79,8 @@ function News() {
             <Input
               value={q}
               onChange={(e) => setQ(e.target.value)}
-              placeholder="Search articles…"
-              aria-label="Search articles"
+              placeholder={t.searchPlaceholder}
+              aria-label={t.searchPlaceholder}
               className="pl-9 text-ink"
             />
           </div>
@@ -61,14 +93,16 @@ function News() {
               >
                 <CardContent className="p-6">
                   <span className="bg-primary px-2 py-1 text-xs font-semibold uppercase tracking-wide text-primary-foreground">
-                    {p.category}
+                    {localized(p.category, language)}
                   </span>
                   <h2 className="mt-4 font-display text-lg font-semibold uppercase leading-snug">
-                    {p.title}
+                    {localized(p.title, language)}
                   </h2>
-                  <p className="mt-2 text-sm text-muted-foreground">{p.excerpt}</p>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    {localized(p.excerpt, language)}
+                  </p>
                   <p className="mt-4 text-xs text-muted-foreground">
-                    {new Date(p.date).toLocaleDateString("en-US", {
+                    {new Date(p.date).toLocaleDateString(t.dateLocale, {
                       day: "2-digit",
                       month: "long",
                       year: "numeric",
@@ -78,7 +112,7 @@ function News() {
               </Card>
             ))}
             {filtered.length === 0 && (
-              <p className="text-sm text-muted-foreground">No articles found for your search.</p>
+              <p className="text-sm text-muted-foreground">{t.empty}</p>
             )}
           </div>
         </div>

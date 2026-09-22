@@ -1,0 +1,2103 @@
+============================================================
+FICHIER : C:\xampp\htdocs\Shaba-industry-main\src\routes\a-propos.tsx
+============================================================
+import { createFileRoute } from "@tanstack/react-router";
+import { PageHero } from "@/components/site/PageHero";
+import { Card, CardContent } from "@/components/ui/card";
+import { values, stats } from "@/lib/site-data";
+
+export const Route = createFileRoute("/a-propos")({
+  head: () => ({
+    meta: [
+      { title: "À propos — SHABA INDUSTRY, entreprise multiservices à Lubumbashi" },
+      {
+        name: "description",
+        content:
+          "Vision, mission, valeurs, historique et équipe de SHABA INDUSTRY, entreprise multiservices basée à Lubumbashi en RDC.",
+      },
+      { property: "og:title", content: "À propos de SHABA INDUSTRY" },
+      {
+        property: "og:description",
+        content: "Notre vision, notre mission, nos valeurs et notre équipe à Lubumbashi, RDC.",
+      },
+    ],
+  }),
+  component: About,
+});
+
+const history = [
+  { year: "2018", text: "Création de l'activité de fournitures industrielles à Lubumbashi." },
+  { year: "2020", text: "Lancement du pôle EPI et des premiers contrats miniers." },
+  { year: "2022", text: "Ouverture de SHABA Construction et de l'atelier SHABA Print." },
+  { year: "2024", text: "Développement du pôle Import & Export et de la logistique." },
+  { year: "2026", text: "Création du pôle Services IT et transformation digitale." },
+];
+
+const team = [
+  { name: "Direction Générale", role: "Stratégie & partenariats" },
+  { name: "Pôle Technique", role: "Construction & maintenance" },
+  { name: "Pôle Commercial", role: "Fournitures & EPI" },
+  { name: "Pôle Digital", role: "IT, web & cybersécurité" },
+];
+
+function About() {
+  return (
+    <>
+      <PageHero
+        eyebrow="À propos"
+        title="SHABA INDUSTRY"
+        description="**A Congolese multiservice company empowering industries, mining operations, and businesses across Haut-Katanga.**
+."
+      />
+
+      <section className="py-16 md:py-20">
+        <div className="container-page grid gap-10 lg:grid-cols-3">
+          <div className="lg:col-span-2">
+            <h2 className="text-2xl font-bold uppercase md:text-3xl">ABOUT Us </h2>
+            <p className="mt-5 text-muted-foreground">
+             As one of RDC's leading PPE supplier, It is important that we provide you with maximum safety and protection gear on the worksite.
+             Having in mind QUALITY, STYLE and WORLD CLASS SAFETY.
+
+             Shaba Industry was originally founded to suppli generel equipement to local companies.
+             The core focus of the business was to supply general products acrsoss the city as well as other goods, which included Personal Protectie
+             equipement (PPE) To several companies nationally.
+
+             From this slow start, Shaba industry has grown into contry's leading wholesaler of PPe and related product,
+             many under various reliable brands, which are well-known as reference fot quality, competitive pricingn and on-time delivery.
+
+             our ability to handle both large and small orders, combined with our flexibility and strong customer relationships, has enable us to delevery both high-end product to our clients.
+
+             we're dedicated to our custumers and people thet our products protect.
+      
+          
+            </p>
+            <p className="mt-4 text-muted-foreground">
+             Our integrated multiservice approach gives clients access to a single trusted partner for all their needs, delivering faster turnaround times and consistently high-quality service.
+
+            </p>
+
+            <div className="mt-10 grid gap-6 md:grid-cols-2">
+              <div className="border-l-4 border-primary bg-muted p-6">
+                <h3 className="font-display text-lg font-semibold uppercase">OUR VISION </h3>
+                <p className="mt-2 text-sm text-muted-foreground">
+                 To provide a best-in-class and substainable production precess that enables all stakeholders
+                 to archive their business objectives while generating higher revenue. We long to create a 
+                 win-win situation for everyone product in a timely and efficient manner.
+                </p>
+              </div>
+              <div className="border-l-4 border-primary bg-muted p-6">
+                <h3 className="font-display text-lg font-semibold uppercase">OUR MISSION</h3>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  We are dedicated to providing value to our customers though strong partnership and efficient delivery
+                  of  yhe best quality product and services that macth their key requirements.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid gap-4">
+            {stats.map((s) => (
+              <div key={s.label} className="border border-border p-5">
+                <p className="font-display text-3xl font-bold text-primary">{s.value}</p>
+                <p className="text-xs uppercase tracking-wide text-muted-foreground">{s.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-muted py-16 md:py-20">
+        <div className="container-page">
+          <h2 className="text-2xl font-bold uppercase md:text-3xl">CORE VALUES</h2>
+          <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {values.map((v) => (
+              <Card key={v.title} className="h-full">
+                <CardContent className="p-6">
+                  <h3 className="font-display text-lg font-semibold uppercase">{v.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">{v.text}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-20">
+        <div className="container-page grid gap-12 lg:grid-cols-2">
+          <div>
+            <h2 className="text-2xl font-bold uppercase md:text-3xl">Historique</h2>
+            <ol className="mt-8 space-y-6 border-l border-border pl-6">
+              {history.map((h) => (
+                <li key={h.year} className="relative">
+                  <span className="absolute -left-[31px] top-1 h-3 w-3 rounded-full bg-primary" />
+                  <p className="font-display text-lg font-semibold">{h.year}</p>
+                  <p className="text-sm text-muted-foreground">{h.text}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+          <div>
+            <h2 className="text-2xl font-bold uppercase md:text-3xl">Notre équipe</h2>
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {team.map((t) => (
+                <div key={t.name} className="border border-border p-6 transition-colors hover:border-primary">
+                  <div className="gradient-gold h-10 w-10 rounded-sm" />
+                  <p className="mt-4 font-display text-base font-semibold uppercase">{t.name}</p>
+                  <p className="text-sm text-muted-foreground">{t.role}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+============================================================
+FICHIER : C:\xampp\htdocs\Shaba-industry-main\src\routes\auth.tsx
+============================================================
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
+import { LogIn } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { PageHero } from "@/components/site/PageHero";
+
+export const Route = createFileRoute("/auth")({
+  head: () => ({
+    meta: [
+      { title: "Espace administration — SHABA INDUSTRY" },
+      {
+        name: "description",
+        content:
+          "Connexion réservée à l'équipe SHABA INDUSTRY pour consulter les demandes de devis, messages et candidatures.",
+      },
+      { property: "og:title", content: "Espace administration — SHABA INDUSTRY" },
+      {
+        property: "og:description",
+        content: "Connexion sécurisée à l'espace de gestion SHABA INDUSTRY.",
+      },
+    ],
+  }),
+  component: AuthPage,
+});
+
+function AuthPage() {
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const [mode, setMode] = useState<"signin" | "signup">("signin");
+
+  useEffect(() => {
+    void supabase.auth.getSession().then(({ data }) => {
+      if (data.session) navigate({ to: "/admin", replace: true });
+    });
+  }, [navigate]);
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    const email = String(fd.get("email") ?? "").trim();
+    const password = String(fd.get("password") ?? "");
+    setLoading(true);
+    try {
+      if (mode === "signup") {
+        const { error } = await supabase.auth.signUp({
+          email,
+          password,
+          options: { emailRedirectTo: `${window.location.origin}/admin` },
+        });
+        if (error) throw error;
+        toast.success("Compte créé. Vérifiez votre boîte mail pour confirmer.");
+      } else {
+        const { error } = await supabase.auth.signInWithPassword({ email, password });
+        if (error) throw error;
+        navigate({ to: "/admin", replace: true });
+      }
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Connexion impossible.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <>
+      <PageHero
+        eyebrow="Administration"
+        title="Espace équipe"
+        description="Connexion réservée au personnel SHABA INDUSTRY."
+      />
+      <section className="py-16 md:py-20">
+        <div className="container-page max-w-md">
+          <form onSubmit={onSubmit} className="grid gap-5 border border-border p-6 md:p-8">
+            <div className="grid gap-2">
+              <Label className="text-xs uppercase tracking-wide text-muted-foreground">Email</Label>
+              <Input name="email" type="email" required autoComplete="email" />
+            </div>
+            <div className="grid gap-2">
+              <Label className="text-xs uppercase tracking-wide text-muted-foreground">
+                Mot de passe
+              </Label>
+              <Input
+                name="password"
+                type="password"
+                required
+                minLength={6}
+                autoComplete={mode === "signin" ? "current-password" : "new-password"}
+              />
+            </div>
+            <Button type="submit" disabled={loading} size="lg">
+              <LogIn className="mr-2 h-4 w-4" />
+              {mode === "signin" ? "Se connecter" : "Créer le compte"}
+            </Button>
+            <button
+              type="button"
+              onClick={() => setMode(mode === "signin" ? "signup" : "signin")}
+              className="text-xs uppercase tracking-wide text-muted-foreground hover:text-primary"
+            >
+              {mode === "signin" ? "Créer un compte équipe" : "J'ai déjà un compte"}
+            </button>
+          </form>
+        </div>
+      </section>
+    </>
+  );
+}
+
+============================================================
+FICHIER : C:\xampp\htdocs\Shaba-industry-main\src\routes\blog.tsx
+============================================================
+import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { Search } from "lucide-react";
+import { PageHero } from "@/components/site/PageHero";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { posts } from "@/lib/site-data";
+
+export const Route = createFileRoute("/blog")({
+  head: () => ({
+    meta: [
+      { title: "News & Articles — SHABA INDUSTRY Insights" },
+      {
+        name: "description",
+        content:
+          "Stay informed with SHABA INDUSTRY: expert articles and industry insights on construction, manufacturing, PPE, printing, and cybersecurity in the DRC.",
+      },
+      { property: "og:title", content: "News & Articles — SHABA INDUSTRY" },
+      {
+        property: "og:description",
+        content:
+          "Professional analysis, technical guidance, and industry updates from Lubumbashi and beyond.",
+      },
+    ],
+  }),
+  component: News,
+});
+
+function News() {
+  const [q, setQ] = useState("");
+  const filtered = posts.filter((p) =>
+    (p.title + p.category + p.excerpt).toLowerCase().includes(q.toLowerCase()),
+  );
+
+  return (
+    <>
+      <PageHero
+        eyebrow="News & Articles"
+        title="Insights, Updates & Expert Perspectives"
+        description="Explore authoritative articles on construction, industry, PPE, printing, and cybersecurity. Our specialists share practical guidance and the latest developments shaping the sector."
+      />
+
+      <section className="py-16 bg-foreground md:py-20">
+        <div className="container-page">
+          <div className="relative max-w-md">
+            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+            <Input
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+              placeholder="Search articles…"
+              aria-label="Search articles"
+              className="pl-9 text-ink"
+            />
+          </div>
+
+          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {filtered.map((p) => (
+              <Card
+                key={p.slug}
+                className="h-full transition-all hover:-translate-y-1 hover:shadow-industrial"
+              >
+                <CardContent className="p-6">
+                  <span className="bg-primary px-2 py-1 text-xs font-semibold uppercase tracking-wide text-primary-foreground">
+                    {p.category}
+                  </span>
+                  <h2 className="mt-4 font-display text-lg font-semibold uppercase leading-snug">
+                    {p.title}
+                  </h2>
+                  <p className="mt-2 text-sm text-muted-foreground">{p.excerpt}</p>
+                  <p className="mt-4 text-xs text-muted-foreground">
+                    {new Date(p.date).toLocaleDateString("en-US", {
+                      day: "2-digit",
+                      month: "long",
+                      year: "numeric",
+                    })}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+            {filtered.length === 0 && (
+              <p className="text-sm text-muted-foreground">No articles found for your search.</p>
+            )}
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+============================================================
+FICHIER : C:\xampp\htdocs\Shaba-industry-main\src\routes\carrieres.tsx
+============================================================
+import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { toast } from "sonner";
+import { Briefcase, MapPin, Send } from "lucide-react";
+import { PageHero } from "@/components/site/PageHero";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { jobs } from "@/lib/site-data";
+import { submitApplication } from "@/lib/submissions";
+
+export const Route = createFileRoute("/carrieres")({
+  head: () => ({
+    meta: [
+      { title: "Careers — Opportunities at SHABA INDUSTRY, Lubumbashi" },
+      {
+        name: "description",
+        content:
+          "Discover career opportunities at SHABA INDUSTRY in Lubumbashi: industrial maintenance, sales, graphic design, and web development. Submit your CV and join our growing team.",
+      },
+      { property: "og:title", content: "Careers — SHABA INDUSTRY" },
+      {
+        property: "og:description",
+        content:
+          "Explore job openings or send a spontaneous application to SHABA INDUSTRY in Lubumbashi, DRC.",
+      },
+    ],
+  }),
+  component: Careers,
+});
+
+function Careers() {
+  const [sending, setSending] = useState(false);
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    setSending(true);
+    try {
+      await submitApplication({
+        name: String(fd.get("name") ?? "").trim(),
+        email: String(fd.get("email") ?? "").trim(),
+        position: String(fd.get("position") ?? "").trim() || "Open Application",
+        message: String(fd.get("message") ?? "").trim() || undefined,
+      });
+      toast.success(
+        "Application submitted successfully. Thank you for your interest in SHABA INDUSTRY!",
+      );
+      form.reset();
+    } catch {
+      toast.error("Submission failed. Please try again later.");
+    } finally {
+      setSending(false);
+    }
+  };
+
+  return (
+    <>
+      <PageHero
+        eyebrow="Careers"
+        title="Shape Your Future With Us"
+        description="At Shaba Industry, we welcome ambitious professionals eager to drive innovation in industry and deliver exceptional customer service. Explore our current openings or send us your CV."
+      />
+
+      <section className="py-16 text-ink bg-foreground md:py-20">
+        <div className="container-page grid gap-10 lg:grid-cols-[3fr_2fr]">
+          <div>
+            <h2 className="text-2xl font-bold uppercase">Current Openings</h2>
+            <div className="mt-6 space-y-4">
+              {jobs.map((j) => (
+                <div
+                  key={j.title}
+                  className="flex flex-col gap-3 border border-border p-5 transition-colors hover:border-primary sm:flex-row sm:items-center sm:justify-between"
+                >
+                  <div>
+                    <h3 className="font-display text-lg font-semibold uppercase">{j.title}</h3>
+                    <p className="mt-1 flex flex-wrap gap-4 text-xs uppercase tracking-wide text-muted-foreground">
+                      <span className="flex items-center gap-1">
+                        <Briefcase className="h-3.5 w-3.5 text-primary" /> {j.type}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <MapPin className="h-3.5 w-3.5 text-primary" /> {j.place}
+                      </span>
+                    </p>
+                  </div>
+                  <Button variant="secondary" size="sm" asChild>
+                    <a href="#application">Apply Now</a>
+                  </Button>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <form
+            id="application"
+            onSubmit={onSubmit}
+            className="grid h-max gap-4 border-l-4 text-ink border-primary bg-foreground p-6"
+          >
+            <h2 className="text-2xl font-bold uppercase">Submit Your Application</h2>
+            <div className="grid gap-2">
+              <Label className="text-xs uppercase tracking-wide text-muted-foreground">
+                Full Name *
+              </Label>
+              <Input name="name" required maxLength={100} />
+            </div>
+            <div className="grid gap-2">
+              <Label className="text-xs uppercase tracking-wide text-muted-foreground">
+                Email *
+              </Label>
+              <Input name="email" type="email" required maxLength={255} />
+            </div>
+            <div className="grid gap-2">
+              <Label className="text-xs uppercase tracking-wide text-muted-foreground">
+                Position of Interest
+              </Label>
+              <Input name="position" maxLength={120} />
+            </div>
+            <div className="grid gap-2">
+              <Label className="text-xs uppercase tracking-wide text-muted-foreground">
+                Message
+              </Label>
+              <Textarea
+                name="message"
+                rows={4}
+                maxLength={1500}
+                placeholder="Tell us about your skills, experience, and motivation."
+              />
+            </div>
+            <div className="grid gap-2">
+              <Label className="text-xs uppercase tracking-wide text-muted-foreground">
+                CV (PDF)
+              </Label>
+              <Input name="cv" type="file" accept=".pdf,.doc,.docx" />
+              <p className="text-xs text-muted-foreground">Multiple files ? </p>
+            </div>
+            <Button type="submit" disabled={sending} className="justify-self-start">
+              <Send className="mr-2 h-4 w-4" /> {sending ? "Submitting…" : "Apply Now"}
+            </Button>
+          </form>
+        </div>
+      </section>
+    </>
+  );
+}
+
+============================================================
+FICHIER : C:\xampp\htdocs\Shaba-industry-main\src\routes\catalogue.tsx
+============================================================
+import { createFileRoute } from "@tanstack/react-router";
+import { Download, FileText } from "lucide-react";
+import { PageHero } from "@/components/site/PageHero";
+import { Button } from "@/components/ui/button";
+import { catalogues } from "@/lib/site-data";
+
+export const Route = createFileRoute("/catalogue")({
+  head: () => ({
+    meta: [
+      { title: "Catalogues & Documentation — SHABA INDUSTRY" },
+      {
+        name: "description",
+        content:
+          "Download SHABA INDUSTRY catalogues: PPE, industrial and mining supplies, printing brochures, and technical documentation.",
+      },
+      { property: "og:title", content: "Catalogues & Documentation — SHABA INDUSTRY" },
+      {
+        property: "og:description",
+        content: "PDF catalogues, technical sheets, and product documentation.",
+      },
+    ],
+  }),
+  component: Catalogue,
+});
+
+function Catalogue() {
+  return (
+    <>
+      <PageHero
+        eyebrow="Catalogue"
+        title="Catalogues & Documentation"
+        description="Access our product catalogues, technical sheets, and documentation available for direct download."
+      />
+
+      <section className="py-16 bg-foreground md:py-20">
+        <div className="container-page grid gap-6 md:grid-cols-2">
+          {catalogues.map((c) => (
+            <div
+              key={c.title}
+              className="flex bg-muted items-start gap-4 border border-border p-6 transition-colors hover:border-primary"
+            >
+              <span className="gradient-gold flex h-12 w-12 shrink-0 items-center justify-center rounded-sm text-primary-foreground">
+                <FileText className="h-6 w-6" />
+              </span>
+              <div className="flex-1">
+                <h2 className="font-display text-lg font-semibold uppercase">{c.title}</h2>
+                <p className="mt-1 text-sm text-muted-foreground">{c.desc}</p>
+                <Button asChild size="sm" variant="secondary" className="mt-4">
+                  {/* Replace with actual file path or URL for each catalogue */}
+                  <a href={`/downloads/${c.title.replace(/\s+/g, "-").toLowerCase()}.pdf`} download>
+                    <Download className="mr-2 h-4 w-4" /> {c.format}
+                  </a>
+                </Button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="bg-muted py-14">
+        <div className="container-page flex flex-col items-start justify-between gap-5 md:flex-row md:items-center">
+          <div>
+            <h2 className="text-2xl font-bold uppercase">Need a specific datasheet?</h2>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Our sales team will provide the documentation tailored to your requirements.
+            </p>
+          </div>
+          <Button asChild size="lg">
+            <a href="/contact">Contact Us</a>
+          </Button>
+        </div>
+      </section>
+    </>
+  );
+}
+
+============================================================
+FICHIER : C:\xampp\htdocs\Shaba-industry-main\src\routes\contact.tsx
+============================================================
+import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { z } from "zod";
+import { toast } from "sonner";
+import { Mail, MapPin, MessageCircle, Phone, Send } from "lucide-react";
+import { PageHero } from "@/components/site/PageHero";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { company } from "@/lib/site-data";
+import { submitContact } from "@/lib/submissions";
+
+export const Route = createFileRoute("/contact")({
+  head: () => ({
+    meta: [
+      { title: "Contact — SHABA INDUSTRY, Lubumbashi (DRC)" },
+      {
+        name: "description",
+        content:
+          "Reach SHABA INDUSTRY: 02 Changalele, Route Kinsevere, Lubumbashi. Phone, WhatsApp, email, and contact form.",
+      },
+      { property: "og:title", content: "Contact — SHABA INDUSTRY" },
+      {
+        property: "og:description",
+        content: "Address, phone numbers, emails, and contact form in Lubumbashi, DRC.",
+      },
+    ],
+  }),
+  component: Contact,
+});
+
+const contactSchema = z.object({
+  name: z.string().trim().min(2, "Name too short").max(100),
+  email: z.string().trim().email("Invalid email").max(255),
+  message: z.string().trim().min(10, "Message too short").max(2000),
+});
+
+function Contact() {
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [sending, setSending] = useState(false);
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const parsed = contactSchema.safeParse(Object.fromEntries(new FormData(form)));
+    if (!parsed.success) {
+      const next: Record<string, string> = {};
+      for (const issue of parsed.error.issues) next[String(issue.path[0])] = issue.message;
+      setErrors(next);
+      return;
+    }
+    setErrors({});
+    setSending(true);
+    try {
+      await submitContact(parsed.data);
+      toast.success("Message sent! We will respond promptly.");
+      form.reset();
+    } catch {
+      toast.error("Unable to send at the moment. Please try again or reach us via WhatsApp.");
+    } finally {
+      setSending(false);
+    }
+  };
+
+  return (
+    <>
+      <PageHero
+        eyebrow="Stay Connected"
+        title="Reach Out Today"
+        description="Our team is available Monday through Saturday to assist with your inquiries."
+      />
+
+      <section className="py-16 text-ink bg-foreground md:py-20">
+        <div className="container-page grid gap-10 lg:grid-cols-2">
+          <div>
+            <h2 className="text-2xl font-bold uppercase">Our Office & Channels</h2>
+            <ul className="mt-6 space-y-5 text-sm">
+              <li className="flex gap-3">
+                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+                <span>{company.address}</span>
+              </li>
+              {company.phones.map((p) => (
+                <li key={p} className="flex gap-3">
+                  <Phone className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+                  <a href={`tel:${p.replace(/\s/g, "")}`} className="hover:text-primary">
+                    {p}
+                  </a>
+                </li>
+              ))}
+              {company.emails.map((m) => (
+                <li key={m} className="flex gap-3">
+                  <Mail className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+                  <a href={`mailto:${m}`} className="hover:text-primary">
+                    {m}
+                  </a>
+                </li>
+              ))}
+            </ul>
+
+            <Button asChild className="mt-7" variant="secondary">
+              <a href={`https://wa.me/${company.whatsapp}`} target="_blank" rel="noreferrer">
+                <MessageCircle className="mr-2 h-4 w-4" /> Write on WhatsApp
+              </a>
+            </Button>
+
+            <div className="mt-8 overflow-hidden border border-border">
+              <iframe
+                title="Location of SHABA INDUSTRY in Lubumbashi"
+                src="https://www.google.com/maps?q=Route%20Kinsevere%2C%20Lubumbashi%2C%20DRC&output=embed"
+                width="100%"
+                height="320"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                style={{ border: 0 }}
+              />
+            </div>
+          </div>
+
+          <form onSubmit={onSubmit} className="grid h-max gap-5 border border-border p-6 md:p-8">
+            <h2 className="text-2xl font-bold uppercase">We're Here to Respond</h2>
+            <div className="grid gap-2">
+              <Label className="text-xs uppercase tracking-wide text-muted-foreground">
+                Name *
+              </Label>
+              <Input name="name" required maxLength={100} placeholder="Your name" />
+              {errors["name"] && <p className="text-xs text-destructive">{errors["name"]}</p>}
+            </div>
+            <div className="grid gap-2">
+              <Label className="text-xs uppercase tracking-wide text-muted-foreground">
+                Email *
+              </Label>
+              <Input
+                name="email"
+                type="email"
+                required
+                maxLength={255}
+                placeholder="you@company.com"
+              />
+              {errors["email"] && <p className="text-xs text-destructive">{errors["email"]}</p>}
+            </div>
+            <div className="grid gap-2">
+              <Label className="text-xs uppercase tracking-wide text-muted-foreground">
+                Message *
+              </Label>
+              <Textarea
+                name="message"
+                rows={6}
+                required
+                maxLength={2000}
+                placeholder="Your message"
+              />
+              {errors["message"] && <p className="text-xs text-destructive">{errors["message"]}</p>}
+            </div>
+            <Button type="submit" size="lg" className="justify-self-start">
+              <Send className="mr-2 h-4 w-4" /> Send
+            </Button>
+          </form>
+        </div>
+      </section>
+    </>
+  );
+}
+
+============================================================
+FICHIER : C:\xampp\htdocs\Shaba-industry-main\src\routes\devis.tsx
+============================================================
+import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { z } from "zod";
+import { toast } from "sonner";
+import { Send } from "lucide-react";
+
+import { PageHero } from "@/components/site/PageHero";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { services } from "@/lib/site-data";
+import { submitQuote } from "@/lib/submissions";
+
+const searchSchema = z.object({
+  service: z.string().optional(),
+});
+
+export const Route = createFileRoute("/devis")({
+  validateSearch: searchSchema,
+  head: () => ({
+    meta: [
+      { title: "Request a Quote — SHABA INDUSTRY Lubumbashi" },
+      {
+        name: "description",
+        content:
+          "Get a free quote for PPE, construction works, printing, industrial supplies, logistics, or IT projects in Lubumbashi.",
+      },
+      {
+        property: "og:title",
+        content: "Request a Quote — SHABA INDUSTRY",
+      },
+      {
+        property: "og:description",
+        content:
+          "Describe your requirements and we will respond within 24 business hours.",
+      },
+    ],
+  }),
+  component: Quote,
+});
+
+const quoteSchema = z.object({
+  name: z.string().trim().min(2, "Name too short").max(100),
+  company: z.string().trim().max(120).optional(),
+  phone: z.string().trim().min(6, "Invalid phone number").max(30),
+  email: z.string().trim().email("Invalid email").max(255),
+  service: z.string().min(1, "Please select a service"),
+  message: z
+    .string()
+    .trim()
+    .min(10, "Please describe your requirement (min. 10 characters)")
+    .max(2000),
+});
+
+const MAX_FILE_SIZE = 8 * 1024 * 1024;
+const MAX_TOTAL_SIZE = 20 * 1024 * 1024;
+const MAX_FILES = 5;
+
+type QuoteAttachment = {
+  filename: string;
+  content: string;
+  contentType: string;
+};
+
+async function fileToBase64(file: File): Promise<QuoteAttachment> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      const result = reader.result;
+
+      if (typeof result !== "string") {
+        reject(new Error(`Unable to read ${file.name}`));
+        return;
+      }
+
+      const base64 = result.split(",")[1];
+
+      if (!base64) {
+        reject(new Error(`Unable to encode ${file.name}`));
+        return;
+      }
+
+      resolve({
+        filename: file.name,
+        content: base64,
+        contentType: file.type || "application/octet-stream",
+      });
+    };
+
+    reader.onerror = () => {
+      reject(new Error(`Unable to read ${file.name}`));
+    };
+
+    reader.readAsDataURL(file);
+  });
+}
+
+function Quote() {
+  const { service } = Route.useSearch();
+
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [sending, setSending] = useState(false);
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const form = e.currentTarget;
+    const data = Object.fromEntries(new FormData(form));
+
+    const parsed = quoteSchema.safeParse(data);
+
+    if (!parsed.success) {
+      const next: Record<string, string> = {};
+
+      for (const issue of parsed.error.issues) {
+        next[String(issue.path[0])] = issue.message;
+      }
+
+      setErrors(next);
+      toast.error("Please correct the highlighted fields.");
+      return;
+    }
+
+    const fileInput = form.elements.namedItem("files") as
+      | HTMLInputElement
+      | null;
+
+    const selectedFiles = fileInput?.files
+      ? Array.from(fileInput.files)
+      : [];
+
+    if (selectedFiles.length > MAX_FILES) {
+      toast.error(`You can attach a maximum of ${MAX_FILES} files.`);
+      return;
+    }
+
+    const totalSize = selectedFiles.reduce(
+      (total, file) => total + file.size,
+      0,
+    );
+
+    const oversizedFile = selectedFiles.find(
+      (file) => file.size > MAX_FILE_SIZE,
+    );
+
+    if (oversizedFile) {
+      toast.error(
+        `"${oversizedFile.name}" is too large. Maximum size is 8 MB per file.`,
+      );
+      return;
+    }
+
+    if (totalSize > MAX_TOTAL_SIZE) {
+      toast.error("The total size of your attachments cannot exceed 20 MB.");
+      return;
+    }
+
+    setErrors({});
+    setSending(true);
+
+    try {
+      const attachments = await Promise.all(
+        selectedFiles.map(fileToBase64),
+      );
+
+      await submitQuote({
+        ...parsed.data,
+        attachments,
+      });
+
+      toast.success(
+        "Request submitted! Our team will respond within 24 business hours.",
+      );
+
+      form.reset();
+    } catch (error) {
+      console.error("Quote submission error:", error);
+
+      toast.error(
+        "Unable to send at the moment. Please try again or contact us via WhatsApp.",
+      );
+    } finally {
+      setSending(false);
+    }
+  };
+
+  return (
+    <>
+      <PageHero
+        eyebrow="Get a Tailored Proposal"
+        title="Business Requests"
+        description="Submit your requirements and receive a detailed quotation within one business day"
+      />
+
+      <section className="bg-foreground py-16 text-ink md:py-20">
+        <div className="container-page grid gap-10 lg:grid-cols-[2fr_1fr]">
+          <form
+            onSubmit={onSubmit}
+            className="grid gap-5 border border-border p-6 md:p-8"
+          >
+            <div className="grid gap-5 sm:grid-cols-2">
+              <Field label="Full Name *" error={errors["name"]}>
+                <Input
+                  name="name"
+                  required
+                  maxLength={100}
+                  placeholder="Your name"
+                />
+              </Field>
+
+              <Field label="Company" error={errors["company"]}>
+                <Input
+                  name="company"
+                  maxLength={120}
+                  placeholder="Your company name"
+                />
+              </Field>
+
+              <Field label="Phone *" error={errors["phone"]}>
+                <Input
+                  name="phone"
+                  required
+                  maxLength={30}
+                  placeholder="+243 ..."
+                />
+              </Field>
+
+              <Field label="Email *" error={errors["email"]}>
+                <Input
+                  name="email"
+                  type="email"
+                  required
+                  maxLength={255}
+                  placeholder="you@company.com"
+                />
+              </Field>
+            </div>
+
+            <Field label="Service Required *" error={errors["service"]}>
+              <select
+                name="service"
+                defaultValue={service ?? ""}
+                required
+                className="h-10 w-full rounded-sm border border-input bg-foreground px-3 text-sm"
+              >
+                <option value="">------</option>
+
+                {services.map((s) => (
+                  <option key={s.slug} value={s.slug}>
+                    {s.title}
+                  </option>
+                ))}
+              </select>
+            </Field>
+
+            <Field
+              label="Requirement Description *"
+              error={errors["message"]}
+            >
+              <Textarea
+                name="message"
+                rows={6}
+                required
+                maxLength={2000}
+                placeholder="Quantities, deadlines, delivery location…"
+              />
+            </Field>
+
+            <Field label="Attachments (plans, specifications)">
+              <Input
+                name="files"
+                type="file"
+                multiple
+                accept=".pdf,.png,.jpg,.jpeg,.webp,.doc,.docx,.xls,.xlsx"
+              />
+
+              <p className="text-xs text-muted-foreground">
+                Maximum 5 files, 8 MB per file, 20 MB total.
+              </p>
+            </Field>
+
+            <Button
+              type="submit"
+              size="lg"
+              disabled={sending}
+              className="justify-self-start"
+            >
+              <Send className="mr-2 h-4 w-4" />
+
+              {sending ? "Sending…" : "Submit Request"}
+            </Button>
+          </form>
+
+          <aside className="h-max border-l-4 border-primary bg-muted p-6">
+            <h2 className="font-display text-lg font-semibold uppercase text-primary">
+              How It Works ?
+            </h2>
+
+            <ol className="mt-4 space-y-4 text-sm text-muted-foreground">
+              <li>
+                <span className="font-display font-semibold text-foreground">
+                  1. Your Request
+                </span>
+                <br />
+                Describe your requirements in a few lines.
+              </li>
+
+              <li>
+                <span className="font-display font-semibold text-foreground">
+                  2. Review
+                </span>
+                <br />
+                Our team analyzes feasibility and timelines.
+              </li>
+
+              <li>
+                <span className="font-display font-semibold text-foreground">
+                  3. Quote
+                </span>
+                <br />
+                You receive a detailed offer within 24 business hours.
+              </li>
+            </ol>
+          </aside>
+        </div>
+      </section>
+    </>
+  );
+}
+
+function Field({
+  label,
+  error,
+  children,
+}: {
+  label: string;
+  error?: string | undefined;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="grid gap-2">
+      <Label className="text-xs uppercase tracking-wide text-muted-foreground">
+        {label}
+      </Label>
+
+      {children}
+
+      {error && (
+        <p className="text-xs text-destructive">
+          {error}
+        </p>
+      )}
+    </div>
+  );
+}
+
+============================================================
+FICHIER : C:\xampp\htdocs\Shaba-industry-main\src\routes\index.tsx
+============================================================
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import { ArrowRight, CheckCircle2, HardHat, Quote, ShieldCheck, Timer, Truck } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import heroImg from "@/assets/hero-industry.jpg";
+import { services, stats, testimonials, company } from "@/lib/site-data";
+
+export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Shaba Industry — Leading Industrial and Corporate Service Provider" },
+      {
+        name: "description",
+        content:
+          "Premier industrial contractor in Lubumbashi, DRC. Premium PPE & workwear, mining procurement, cross-border logistics, commercial printing, construction, and enterprise technology.",
+      },
+      {
+        property: "og:title",
+        content: "SHABA INDUSTRY — Integrated Industrial & Mining Solutions",
+      },
+      {
+        property: "og:description",
+        content:
+          "Reliable procurement, certified PPE, freight logistics, civil works, printing, and IT services tailored for mining and industrial operations across the DRC.",
+      },
+    ],
+  }),
+  component: Index,
+});
+
+const slides = [
+  {
+    title: "Your Trusted Industrial & Mining Partner",
+    text: "Delivering end-to-end solutions across PPE, mining supplies, logistics, commercial printing, construction, and IT services across the DRC.",
+  },
+  {
+    title: "Certified PPE & Safety Solutions",
+    text: "World-class site safety gear, high-visibility workwear, and protective equipment compliant with international standards.",
+  },
+  {
+    title: "Mining & Industrial Supplies",
+    text: "Reliable procurement of specialized machinery, technical consumables, heavy-duty hardware, and industrial tooling.",
+  },
+  {
+    title: "Import/Export & Customs Clearance",
+    text: "Cross-border freight forwarding, supply chain logistics, and seamless customs brokerage for time-critical operations.",
+  },
+  {
+    title: "High-Impact Commercial Printing",
+    text: "Large-format printing, dynamic corporate branding, structural signage, and high-volume promotional materials.",
+  },
+  {
+    title: "Industrial Construction & Maintenance",
+    text: "Turnkey structural engineering, facility renovation, civil works, and comprehensive operational maintenance.",
+  },
+  {
+    title: "Enterprise Technology & IT Infrastructure",
+    text: "Custom software engineering, network architecture, cybersecurity, and managed IT services designed for modern enterprises.",
+  },
+];
+
+function Index() {
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => setActive((i) => (i + 1) % slides.length), 6000);
+    return () => clearInterval(id);
+  }, []);
+
+  const slide = slides[active] ?? slides[0]!;
+
+  return (
+    <>
+      {/* HERO */}
+      <section className="relative min-h-[80vh] overflow-hidden bg-ink text-ink-foreground">
+        <img
+          src={heroImg}
+          alt="Équipe industrielle SHABA INDUSTRY sur un site minier à Lubumbashi"
+          width={1920}
+          height={1088}
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div
+          className="absolute inset-0"
+          style={{ backgroundImage: "var(--gradient-hero)" }}
+          aria-hidden
+        />
+        <div className="container-page relative flex min-h-[80vh] flex-col justify-center py-20">
+          <div key={active} className="rise-in max-w-3xl">
+            <p className="font-display text-xs uppercase tracking-[0.35em] text-primary">
+              SHABA INDUSTRY
+            </p>
+            <h1 className="mt-5 text-4xl font-bold uppercase leading-[1.05] md:text-6xl">
+              {slide.title}
+            </h1>
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-ink-muted md:text-lg">
+              {slide.text}
+            </p>
+          </div>
+          <div className="mt-9 flex flex-wrap gap-3">
+            <Button asChild size="lg">
+              <Link to="/devis">
+                GET A QUOTE <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="border-white/30 bg-transparent text-ink-foreground hover:bg-white/10"
+            >
+              <Link to="/contact">GET IN TOUCH</Link>
+            </Button>
+          </div>
+          <div className="mt-10 flex gap-2">
+            {slides.map((s, i) => (
+              <button
+                key={s.title}
+                aria-label={`Slide ${i + 1}`}
+                onClick={() => setActive(i)}
+                className={`h-1 w-10 rounded-full transition-colors ${i === active ? "bg-primary" : "bg-white/25"}`}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PRESENTATION */}
+      <section className="py-16 md:py-24">
+        <div className="container-page grid gap-12 lg:grid-cols-2 lg:items-center">
+          <div>
+            <p className="font-display text-xs uppercase tracking-[0.3em] text-muted-foreground">
+              Qui sommes-nous
+            </p>
+            <h2 className="mt-3 text-3xl font-bold uppercase md:text-4xl">
+              Une entreprise multiservices au service de l'industrie congolaise
+            </h2>
+            <p className="mt-5 text-muted-foreground">
+              SHABA INDUSTRY est une entreprise basée à Lubumbashi, spécialisée dans les domaines
+              industriels, de la construction, de la sécurité, de l'impression, de la logistique,
+              des fournitures industrielles et minières ainsi que des services informatiques.
+            </p>
+            <p className="mt-4 text-muted-foreground">
+              Nos équipes accompagnent les sociétés minières, industrielles et commerciales du
+              Haut-Katanga avec une exigence constante de qualité, de sécurité et de réactivité.
+            </p>
+            <Button asChild className="mt-7" variant="secondary">
+              <Link to="/a-propos">En savoir plus</Link>
+            </Button>
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            {stats.map((s) => (
+              <div
+                key={s.label}
+                className="border-l-4 border-primary bg-muted px-5 py-7 transition-transform hover:-translate-y-1"
+              >
+                <p className="font-display text-3xl font-bold md:text-4xl">{s.value}</p>
+                <p className="mt-1 text-xs uppercase tracking-wide text-muted-foreground">
+                  {s.label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES */}
+      <section className="bg-foreground py-16 md:py-24">
+        <div className="container-page">
+          <div className="max-w-2xl">
+            <p className="font-display text-xs uppercase tracking-[0.3em] text-muted-foreground">
+              Nos pôles d'activité
+            </p>
+            <h2 className="mt-3 text-3xl font-bold uppercase md:text-4xl">Nos services</h2>
+          </div>
+          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {services.map((s) => (
+              <Link key={s.slug} to="/services/$slug" params={{ slug: s.slug }} className="group">
+                <Card className="h-full overflow-hidden border-border/70 p-0 transition-all group-hover:-translate-y-1 group-hover:shadow-industrial">
+                  <div className="relative h-44 overflow-hidden">
+                    <img
+                      src={s.image}
+                      alt={s.title}
+                      loading="lazy"
+                      width={1200}
+                      height={800}
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <CardContent className="p-6">
+                    <h3 className="font-display text-lg font-semibold uppercase">{s.title}</h3>
+                    <p className="mt-2 text-sm text-muted-foreground">{s.short}</p>
+                    <span className="mt-4 inline-flex items-center text-sm font-medium text-foreground group-hover:text-primary">
+                      Découvrir <ArrowRight className="ml-1 h-4 w-4" />
+                    </span>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHY US */}
+      <section className="py-16 md:py-24">
+        <div className="container-page">
+          <h2 className="text-3xl font-bold uppercase md:text-4xl">Why Choose Us?</h2>
+          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                icon: ShieldCheck,
+                t: "Qualité certifiée",
+                d: "Des produits et prestations conformes aux normes du secteur.",
+              },
+              { icon: Timer, t: "Réactivité", d: "Stock local et interventions rapides sur site." },
+              {
+                icon: HardHat,
+                t: "Expertise terrain",
+                d: "Des équipes formées aux exigences minières et industrielles.",
+              },
+              {
+                icon: Truck,
+                t: "Chaîne complète",
+                d: "De l'approvisionnement international à la livraison.",
+              },
+            ].map((f) => (
+              <div
+                key={f.t}
+                className="border border-border p-6 transition-colors hover:border-primary"
+              >
+                <f.icon className="h-8 w-8 text-primary" />
+                <h3 className="mt-4 font-display text-lg font-semibold uppercase">{f.t}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{f.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PARTNERS */}
+      <section className="border-y border-border bg-foreground py-12">
+        <div className="container-page">
+          <p className="text-center font-display text-xs uppercase tracking-[0.3em] text-muted-foreground">
+            They Trust Us
+          </p>
+          <div className="mt-8 grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-6">
+            {[
+              "Mining Corp",
+              "Katanga Build",
+              "Kinsevere Log",
+              "Congo Steel",
+              "Lubum Trade",
+              "AfriTech",
+            ].map((p) => (
+              <div
+                key={p}
+                className="flex h-16 items-center justify-center border border-border bg-background font-display text-sm uppercase tracking-wide text-muted-foreground"
+              >
+                {p}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="py-16 bg-foreground md:py-24">
+        <div className="container-page">
+          <h2 className="text-3xl font-bold uppercase md:text-4xl">Avis clients</h2>
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {testimonials.map((t) => (
+              <Card key={t.name} className="h-full border-border/70">
+                <CardContent className="p-6">
+                  <Quote className="h-7 w-7 text-primary" />
+                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground">"{t.text}"</p>
+                  <p className="mt-5 font-display text-sm font-semibold uppercase">{t.name}</p>
+                  <p className="text-xs text-muted-foreground">{t.company}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="bg-ink py-16 text-ink-foreground">
+        <div className="container-page flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
+          <div>
+            <h2 className="text-2xl font-bold uppercase md:text-3xl">
+              Un projet, un besoin, une urgence ?
+            </h2>
+            <p className="mt-2 flex items-center gap-2 text-sm text-ink-muted">
+              <CheckCircle2 className="h-4 w-4 text-primary" /> Réponse sous 24h ouvrées ·{" "}
+              {company.phones.join(" · ")}
+            </p>
+          </div>
+          <Button asChild size="lg">
+            <Link to="/devis">Demander un devis</Link>
+          </Button>
+        </div>
+      </section>
+    </>
+  );
+}
+
+============================================================
+FICHIER : C:\xampp\htdocs\Shaba-industry-main\src\routes\realisations.tsx
+============================================================
+import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { Play } from "lucide-react";
+import { PageHero } from "@/components/site/PageHero";
+import { projects, services } from "@/lib/site-data";
+
+export const Route = createFileRoute("/realisations")({
+  head: () => ({
+    meta: [
+      { title: "Réalisations — Chantiers, industrie et projets SHABA INDUSTRY" },
+      {
+        name: "description",
+        content:
+          "Galerie photos et vidéos des réalisations de SHABA INDUSTRY : construction, industrie, impression, informatique et logistique.",
+      },
+      { property: "og:title", content: "Nos réalisations — SHABA INDUSTRY" },
+      {
+        property: "og:description",
+        content: "Découvrez nos projets livrés en construction, industrie, impression et IT.",
+      },
+    ],
+  }),
+  component: Realisations,
+});
+
+const categories = [
+  "Toutes",
+  "Construction",
+  "Industrie",
+  "Impression",
+  "Informatique",
+  "Logistique",
+];
+
+function Realisations() {
+  const [cat, setCat] = useState("Toutes");
+  const filtered = cat === "Toutes" ? projects : projects.filter((p) => p.category === cat);
+  const imageFor = (slug: string) => services.find((s) => s.slug === slug)?.image;
+
+  return (
+    <>
+      <PageHero
+        eyebrow="Réalisations"
+        title="Nos projets livrés"
+        description="Un aperçu de nos interventions pour les entreprises industrielles, minières et commerciales du Haut-Katanga."
+      />
+
+      <section className="py-14 bg-foreground md:py-20">
+        <div className="container-page">
+          <div className="flex flex-wrap gap-2">
+            {categories.map((c) => (
+              <button
+                key={c}
+                onClick={() => setCat(c)}
+                className={`border px-4 py-2 text-sm font-semibold text-primary-foreground uppercase tracking-wide transition-colors ${
+                  cat === c
+                    ? "border-border hover:border-primary"
+                    : "border-primary bg-primary font-semibold text-primary-foreground"
+                }`}
+              >
+                {c}
+              </button>
+            ))}
+          </div>
+
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {filtered.map((p) => (
+              <figure key={p.title} className="group relative overflow-hidden">
+                <img
+                  src={imageFor(p.service)}
+                  alt={p.title}
+                  loading="lazy"
+                  width={1200}
+                  height={800}
+                  className="h-56 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <figcaption className="absolute inset-x-0 bottom-0 bg-ink/85 px-4 py-3 text-ink-foreground">
+                  <p className="font-display text-sm font-semibold uppercase">{p.title}</p>
+                  <p className="text-xs text-primary">{p.category}</p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-foreground py-14 md:py-20">
+        <div className="container-page">
+          <h2 className="text-2xl font-bold text-ink uppercase md:text-3xl">Galerie vidéos</h2>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Reportages de chantier et présentations de nos pôles d'activité.
+          </p>
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {["Chantier industriel", "Atelier impression", "Logistique & convoi"].map((v, i) => (
+              <div
+                key={v}
+                className="relative flex h-48 items-center justify-center overflow-hidden bg-ink text-ink-foreground"
+              >
+                <img
+                  src={imageFor(projects[i]?.service ?? "epi")}
+                  alt={v}
+                  loading="lazy"
+                  width={1200}
+                  height={800}
+                  className="absolute inset-0 h-full w-full object-cover opacity-40"
+                />
+                <div className="relative flex flex-col items-center gap-3">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground">
+                    <Play className="h-5 w-5" />
+                  </span>
+                  <span className="font-display text-sm uppercase tracking-wide">{v}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+============================================================
+FICHIER : C:\xampp\htdocs\Shaba-industry-main\src\routes\services.$slug.tsx
+============================================================
+import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { Check, Download, ArrowRight } from "lucide-react";
+import { PageHero } from "@/components/site/PageHero";
+import { Button } from "@/components/ui/button";
+import { services } from "@/lib/site-data";
+
+export const Route = createFileRoute("/services/$slug")({
+  loader: ({ params }) => {
+    const service = services.find((s) => s.slug === params.slug);
+    if (!service) throw notFound();
+    return { service };
+  },
+  head: ({ loaderData }) => {
+    if (!loaderData) {
+      return {
+        meta: [{ title: "Service introuvable — SHABA INDUSTRY" }, { name: "robots", content: "noindex" }],
+      };
+    }
+    const { service } = loaderData;
+    return {
+      meta: [
+        { title: `${service.title} — SHABA INDUSTRY` },
+        { name: "description", content: service.short },
+        { property: "og:title", content: `${service.title} — SHABA INDUSTRY` },
+        { property: "og:description", content: service.short },
+      ],
+    };
+  },
+  component: ServiceDetail,
+});
+
+function ServiceDetail() {
+  const { service } = Route.useLoaderData();
+  const gallery = service.slug === "construction" || service.slug === "print";
+
+  return (
+    <>
+      <PageHero eyebrow="Service" title={service.title} description={service.short} />
+
+      <section className="py-16 md:py-20">
+        <div className="container-page grid gap-12 lg:grid-cols-2 lg:items-start">
+          <div>
+            <img
+              src={service.image}
+              alt={service.title}
+              loading="lazy"
+              width={1200}
+              height={800}
+              className="shadow-industrial w-full object-cover"
+            />
+          </div>
+          <div>
+            <h2 className="text-2xl font-bold uppercase md:text-3xl">Notre offre</h2>
+            <p className="mt-4 text-muted-foreground">{service.intro}</p>
+            <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+              {service.items.map((item: string) => (
+                <li key={item} className="flex items-start gap-2 border-l-2 border-primary bg-muted px-4 py-3 text-sm">
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button asChild size="lg">
+                <Link to="/devis" search={{ service: service.slug }}>
+                  Demander un devis <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+              <Button asChild size="lg" variant="secondary">
+                <Link to="/catalogue">
+                  <Download className="mr-2 h-4 w-4" /> Catalogue
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {gallery && (
+        <section className="bg-muted py-16">
+          <div className="container-page">
+            <h2 className="text-2xl font-bold uppercase md:text-3xl">Galerie de réalisations</h2>
+            <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {[0, 1, 2, 3, 4, 5].map((i) => (
+                <div key={i} className="group relative overflow-hidden">
+                  <img
+                    src={service.image}
+                    alt={`${service.title} — réalisation ${i + 1}`}
+                    loading="lazy"
+                    width={1200}
+                    height={800}
+                    className="h-52 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <span className="absolute bottom-0 left-0 bg-ink/80 px-3 py-1 text-xs uppercase tracking-wide text-ink-foreground">
+                    Réalisation {i + 1}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <section className="py-16">
+        <div className="container-page">
+          <h2 className="text-2xl font-bold uppercase">Autres services</h2>
+          <div className="mt-6 flex flex-wrap gap-3">
+            {services
+              .filter((s) => s.slug !== service.slug)
+              .map((s) => (
+                <Link
+                  key={s.slug}
+                  to="/services/$slug"
+                  params={{ slug: s.slug }}
+                  className="border border-border px-4 py-2 text-sm transition-colors hover:border-primary hover:text-primary"
+                >
+                  {s.title}
+                </Link>
+              ))}
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+============================================================
+FICHIER : C:\xampp\htdocs\Shaba-industry-main\src\routes\services.index.tsx
+============================================================
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight } from "lucide-react";
+import { PageHero } from "@/components/site/PageHero";
+import { Card, CardContent } from "@/components/ui/card";
+import { services } from "@/lib/site-data";
+
+export const Route = createFileRoute("/services/")({
+  head: () => ({
+    meta: [
+      { title: "Nos services — EPI, construction, print, fournitures, logistique, IT" },
+      {
+        name: "description",
+        content:
+          "Découvrez les six pôles de SHABA INDUSTRY : EPI, construction, impression, fournitures industrielles et minières, import-export et services informatiques.",
+      },
+      { property: "og:title", content: "Nos services — SHABA INDUSTRY" },
+      {
+        property: "og:description",
+        content: "Six pôles d'expertise au service des industries et des mines en RDC.",
+      },
+    ],
+  }),
+  component: ServicesIndex,
+});
+
+function ServicesIndex() {
+  return (
+    <>
+      <PageHero
+        eyebrow="Nos services"
+        title="Six Areas of Specialized Expertise
+"
+        description="Comprehensive solutions tailored to your industrial operations, construction projects, communications, and IT requirements.
+"
+      />
+      <section className="py-16 bg-foreground md:py-20">
+        <div className="container-page grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {services.map((s) => (
+            <Link key={s.slug} to="/services/$slug" params={{ slug: s.slug }} className="group">
+              <Card className="h-full overflow-hidden p-0 transition-all group-hover:-translate-y-1 group-hover:shadow-industrial">
+                <img
+                  src={s.image}
+                  alt={s.title}
+                  loading="lazy"
+                  width={1200}
+                  height={800}
+                  className="h-44 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <CardContent className="p-6">
+                  <h2 className="font-display text-lg font-semibold uppercase">{s.title}</h2>
+                  <p className="mt-2 text-sm text-muted-foreground">{s.short}</p>
+                  <span className="mt-4 inline-flex items-center text-sm font-medium group-hover:text-primary">
+                    Voir le détail <ArrowRight className="ml-1 h-4 w-4" />
+                  </span>
+                </CardContent>
+              </Card>
+            </Link>
+          ))}
+        </div>
+      </section>
+    </>
+  );
+}
+
+============================================================
+FICHIER : C:\xampp\htdocs\Shaba-industry-main\src\routes\__root.tsx
+============================================================
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import {
+  Outlet,
+  Link,
+  createRootRouteWithContext,
+  useRouter,
+  HeadContent,
+  Scripts,
+} from "@tanstack/react-router";
+import { useEffect, type ReactNode } from "react";
+
+import appCss from "../styles.css?url";
+import { reportLovableError } from "../lib/lovable-error-reporting";
+import { Header } from "@/components/site/Header";
+import { Footer } from "@/components/site/Footer";
+import { WhatsAppButton } from "@/components/site/WhatsAppButton";
+import { Toaster } from "@/components/ui/sonner";
+import { LanguageProvider } from "@/lib/language";
+
+
+function NotFoundComponent() {
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+      <div className="max-w-md text-center">
+        <h1 className="text-7xl font-bold text-foreground">404</h1>
+        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
+        <p className="mt-2 text-sm text-muted-foreground">
+          The page you're looking for doesn't exist or has been moved.
+        </p>
+        <div className="mt-6">
+          <Link
+            to="/"
+            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+          >
+            Go home
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+  console.error(error);
+  const router = useRouter();
+  useEffect(() => {
+    reportLovableError(error, { boundary: "tanstack_root_error_component" });
+  }, [error]);
+
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+      <div className="max-w-md text-center">
+        <h1 className="text-xl font-semibold tracking-tight text-foreground">
+          This page didn't load
+        </h1>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Something went wrong on our end. You can try refreshing or head back home.
+        </p>
+        <div className="mt-6 flex flex-wrap justify-center gap-2">
+          <button
+            onClick={() => {
+              router.invalidate();
+              reset();
+            }}
+            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+          >
+            Try again
+          </button>
+          <a
+            href="/"
+            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+          >
+            Go home
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+  head: () => ({
+    meta: [
+      { charSet: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "author", content: "SHABA INDUSTRY" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [
+      {
+        rel: "stylesheet",
+        href: appCss,
+      },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow:wght@300;400;500;600;700&display=swap",
+      },
+      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+    ],
+  }),
+
+  shellComponent: RootShell,
+  component: RootComponent,
+  notFoundComponent: NotFoundComponent,
+  errorComponent: ErrorComponent,
+});
+
+function RootShell({ children }: { children: ReactNode }) {
+  return (
+    <html lang="fr">
+      <head>
+        <HeadContent />
+      </head>
+      <body>
+        {children}
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+
+function RootComponent() {
+  const { queryClient } = Route.useRouteContext();
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <LanguageProvider>
+        <div className="flex min-h-screen flex-col">
+          <Header />
+
+          <main className="flex-1">
+            <Outlet />
+          </main>
+
+          <Footer />
+
+          <WhatsAppButton />
+
+          <Toaster position="top-right" richColors />
+        </div>
+      </LanguageProvider>
+    </QueryClientProvider>
+  );
+}
+
+============================================================
+FICHIER : C:\xampp\htdocs\Shaba-industry-main\src\routes\_authenticated\admin.tsx
+============================================================
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
+import { LogOut, RefreshCw } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { Button } from "@/components/ui/button";
+
+export const Route = createFileRoute("/_authenticated/admin")({
+  head: () => ({
+    meta: [
+      { title: "Tableau de bord — SHABA INDUSTRY" },
+      {
+        name: "description",
+        content:
+          "Gestion des demandes de devis, messages de contact et candidatures reçues sur le site SHABA INDUSTRY.",
+      },
+      { property: "og:title", content: "Tableau de bord — SHABA INDUSTRY" },
+      {
+        property: "og:description",
+        content: "Suivi interne des demandes reçues via le site SHABA INDUSTRY.",
+      },
+    ],
+  }),
+  component: Admin,
+});
+
+type Tab = "quotes" | "messages" | "applications";
+
+const TABS: { id: Tab; label: string; table: string }[] = [
+  { id: "quotes", label: "Devis", table: "quote_requests" },
+  { id: "messages", label: "Messages", table: "contact_messages" },
+  { id: "applications", label: "Candidatures", table: "job_applications" },
+];
+
+function Admin() {
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+  const [tab, setTab] = useState<Tab>("quotes");
+  const [isAdmin, setIsAdmin] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    void (async () => {
+      const { data: userData } = await supabase.auth.getUser();
+      if (!userData.user) {
+        setIsAdmin(false);
+        return;
+      }
+      const { data } = await supabase.rpc("has_role", {
+        _user_id: userData.user.id,
+        _role: "admin",
+      });
+      setIsAdmin(Boolean(data));
+    })();
+  }, []);
+
+  const table = TABS.find((t) => t.id === tab)!.table;
+
+  const { data: rows = [], isFetching } = useQuery({
+    queryKey: ["admin", table],
+    enabled: isAdmin === true,
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from(table as "quote_requests")
+        .select("*")
+        .order("created_at", { ascending: false });
+      if (error) throw error;
+      return data as Record<string, unknown>[];
+    },
+  });
+
+  const signOut = async () => {
+    await queryClient.cancelQueries();
+    queryClient.clear();
+    await supabase.auth.signOut();
+    navigate({ to: "/auth", replace: true });
+  };
+
+  const markHandled = async (id: string) => {
+    const { error } = await supabase
+      .from(table as "quote_requests")
+      .update({ status: "traité" })
+      .eq("id", id);
+    if (error) {
+      toast.error("Mise à jour impossible.");
+      return;
+    }
+    toast.success("Demande marquée comme traitée.");
+    void queryClient.invalidateQueries({ queryKey: ["admin", table] });
+  };
+
+  return (
+    <section className="py-12 md:py-16">
+      <div className="container-page">
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <h1 className="font-display text-3xl font-bold uppercase">Tableau de bord</h1>
+          <div className="flex gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => queryClient.invalidateQueries({ queryKey: ["admin", table] })}
+            >
+              <RefreshCw className="mr-2 h-4 w-4" /> Actualiser
+            </Button>
+            <Button variant="secondary" size="sm" onClick={signOut}>
+              <LogOut className="mr-2 h-4 w-4" /> Déconnexion
+            </Button>
+          </div>
+        </div>
+
+        {isAdmin === false && (
+          <p className="mt-8 border-l-4 border-primary bg-muted p-5 text-sm">
+            Votre compte n'a pas encore les droits administrateur. Demandez à un responsable
+            d'activer votre accès.
+          </p>
+        )}
+
+        {isAdmin && (
+          <>
+            <div className="mt-8 flex flex-wrap gap-2">
+              {TABS.map((t) => (
+                <button
+                  key={t.id}
+                  onClick={() => setTab(t.id)}
+                  className={`border px-4 py-2 text-xs font-semibold uppercase tracking-wide transition-colors ${
+                    tab === t.id
+                      ? "border-primary bg-primary text-primary-foreground"
+                      : "border-border hover:border-primary"
+                  }`}
+                >
+                  {t.label}
+                </button>
+              ))}
+            </div>
+
+            <div className="mt-6 grid gap-4">
+              {isFetching && <p className="text-sm text-muted-foreground">Chargement…</p>}
+              {!isFetching && rows.length === 0 && (
+                <p className="text-sm text-muted-foreground">Aucune entrée pour le moment.</p>
+              )}
+              {rows.map((row) => (
+                <article key={String(row["id"])} className="border border-border p-5">
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <h2 className="font-display text-lg font-semibold uppercase">
+                      {String(row["name"])}
+                    </h2>
+                    <span className="text-xs uppercase tracking-wide text-muted-foreground">
+                      {new Date(String(row["created_at"])).toLocaleString("fr-FR")} ·{" "}
+                      {String(row["status"])}
+                    </span>
+                  </div>
+                  <dl className="mt-3 grid gap-1 text-sm text-muted-foreground sm:grid-cols-2">
+                    {["email", "phone", "company", "service", "subject", "position", "cv_url"]
+                      .filter((k) => row[k])
+                      .map((k) => (
+                        <div key={k}>
+                          <span className="uppercase text-xs tracking-wide">{k}</span> :{" "}
+                          {String(row[k])}
+                        </div>
+                      ))}
+                  </dl>
+                  {row["message"] ? (
+                    <p className="mt-3 whitespace-pre-line text-sm">{String(row["message"])}</p>
+                  ) : null}
+                  {row["status"] !== "traité" && (
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="mt-4"
+                      onClick={() => markHandled(String(row["id"]))}
+                    >
+                      Marquer comme traité
+                    </Button>
+                  )}
+                </article>
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+    </section>
+  );
+}
+
+============================================================
+FICHIER : C:\xampp\htdocs\Shaba-industry-main\src\routes\_authenticated\route.tsx
+============================================================
+import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
+import { supabase } from "@/integrations/supabase/client";
+
+export const Route = createFileRoute("/_authenticated")({
+  ssr: false,
+  beforeLoad: async () => {
+    const { data, error } = await supabase.auth.getUser();
+    if (error || !data.user) throw redirect({ to: "/auth" });
+    return { user: data.user };
+  },
+  component: () => <Outlet />,
+});
+

@@ -14,7 +14,9 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { WhatsAppButton } from "@/components/site/WhatsAppButton";
+import { AiAssistantButton } from "@/components/site/AiAssistantButton";
 import { Toaster } from "@/components/ui/sonner";
+import { LanguageProvider } from "@/lib/language";
 
 
 function NotFoundComponent() {
@@ -109,7 +111,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <head>
         <HeadContent />
       </head>
@@ -126,17 +128,22 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="flex min-h-screen flex-col">
-        <Header />
-        <main className="flex-1">
-          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-          <Outlet />
-        </main>
-        <Footer />
-        <WhatsAppButton />
-        <Toaster position="top-right" richColors />
-      </div>
+      <LanguageProvider>
+        <div className="flex min-h-screen flex-col">
+          <Header />
+
+          <main className="flex-1">
+            <Outlet />
+          </main>
+
+          <Footer />
+
+          <AiAssistantButton />
+          <WhatsAppButton />
+
+          <Toaster position="top-right" richColors />
+        </div>
+      </LanguageProvider>
     </QueryClientProvider>
   );
 }
-
